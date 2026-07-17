@@ -11,10 +11,11 @@
   inset: 0;
   z-index: 300;
   background: var(--cream);
+  color: var(--espresso);
   display: grid;
   place-items: center;
 }
-.brand-intro img { width: 72px; height: 72px; }
+.brand-intro .crown-mark { width: 72px; }
 
 /* ============================================================
    2. HERO
@@ -190,7 +191,7 @@
   gap: 20px;
   padding: 40px 28px;
 }
-.flavor-card--end img { width: 52px; height: 52px; }
+.flavor-card--end .crown-mark { width: 40px; height: auto; fill: currentColor; }
 .flavor-card--end .end-cta {
   font-family: var(--serif);
   font-size: 1.4rem;
@@ -271,7 +272,8 @@
   align-items: baseline;
   gap: 12px;
 }
-.junino-bullet { width: 13px; height: 13px; align-self: center; }
+.junino-bullet { display: inline-flex; align-self: center; color: var(--gold-text); }
+.junino-bullet .crown-mark { width: 13px; }
 .junino-name { font-family: var(--serif); font-weight: 500; }
 .junino-blurb {
   grid-column: 2 / 3;
@@ -509,7 +511,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/img/brand/simbolo-gold.png");
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="44 4 60 40"%3E%3Cpath fill="%233a2a20" d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/%3E%3Cpath fill="%233a2a20" d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/%3E%3C/svg%3E'); /* emblema oficial, mesmo path do logo — antes usava o símbolo antigo (floco de neve) */
   background-repeat: space;
   background-size: 54px;
   opacity: .04;

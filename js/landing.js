@@ -27,6 +27,11 @@
     if (item.seasonal) out += '<span class="pill pill-fest">Festivo · Julho</span>';
     return out;
   }
+  /* emblema oficial (coroa+joia) em vetor puro — mesmo path do header/footer.
+     Substitui os antigos ícones simbolo-*.png (logo antigo, floco de neve). */
+  var CROWN_SVG = '<svg class="crown-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false">' +
+    '<path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/>' +
+    '<path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>';
 
   /* ---------- sabores (carrossel) ---------- */
   function buildFeatured() {
@@ -50,7 +55,7 @@
         '</div></article></div>';
     }).join("");
     html += '<div class="swiper-slide flavor-slide"><a class="flavor-card flavor-card--end" href="cardapio.html">' +
-      '<img src="assets/img/brand/simbolo-cream.png" alt="" width="52" height="52">' +
+      CROWN_SVG +
       '<span class="end-cta">Ver os 20 sabores →</span></a></div>';
     trackEl.innerHTML = html;
 
@@ -69,7 +74,7 @@
       var it = byId[id];
       if (!it) return "";
       return '<li class="junino-row">' +
-        '<img class="junino-bullet" src="assets/img/brand/simbolo-gold.png" alt="" width="13" height="13">' +
+        '<span class="junino-bullet">' + CROWN_SVG + '</span>' +
         '<span class="junino-name">' + esc(it.name) + '</span>' +
         '<span class="junino-price">' + money(it.price) + '</span>' +
         '<span class="junino-blurb">' + esc(it.blurb) + '</span>' +
@@ -116,19 +121,16 @@
     var overlay = document.createElement("div");
     overlay.className = "brand-intro";
     overlay.setAttribute("aria-hidden", "true");
-    var img = document.createElement("img");
-    img.src = "assets/img/brand/simbolo.png";
-    img.alt = "";
-    img.width = 72; img.height = 72;
-    overlay.appendChild(img);
+    overlay.innerHTML = CROWN_SVG;
+    var mark = overlay.querySelector(".crown-mark");
     document.body.appendChild(overlay);
 
     var gsap = window.gsap;
-    gsap.set(img, { scale: 0.92, opacity: 0 });
+    gsap.set(mark, { scale: 0.92, opacity: 0 });
     var tl = gsap.timeline({
       onComplete: function () { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }
     });
-    tl.to(img, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out" })
+    tl.to(mark, { opacity: 1, scale: 1, duration: 0.34, ease: "power2.out" })
       .to(overlay, { opacity: 0, duration: 0.3, ease: "power1.inOut" }, "+=0.06");
   }
 
@@ -284,7 +286,10 @@
     cycle(0);
   }
 
-  /* ---------- sabores: nudge lento no carrossel (guia p/ arrastar) ---------- */
+  /* ---------- sabores: nudge lento no carrossel (guia p/ arrastar) ----------
+     Usava IntersectionObserver antes; trocado pelo mesmo padrão scroll+rAF dos
+     reveals (initReveals) porque o IO se mostrou não confiável em alguns
+     ambientes/dispositivos — o carrossel parava de dar o nudge silenciosamente. */
   function initSaboresHint() {
     var section = $("#sabores");
     var swiperEl = $("[data-sabores-swiper]");
@@ -293,6 +298,8 @@
     function run() {
       if (done) return;
       done = true;
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       window.setTimeout(function () {
         var inst = saboresSwiper;
         if (!inst) return;
@@ -300,14 +307,20 @@
         window.setTimeout(function () { inst.slideTo(0, 1500); }, 2200);
       }, 900);
     }
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) { run(); io.disconnect(); } });
-      }, { threshold: 0.5 });
-      io.observe(section);
-    } else {
-      run();
+    var ticking = false;
+    function check() {
+      var vh = document.documentElement.clientHeight || window.innerHeight;
+      var r = section.getBoundingClientRect();
+      if (r.top < vh * 0.6 && r.bottom > 0) run();
     }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { check(); ticking = false; });
+    }
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
   }
 
   /* ---------- init ---------- */

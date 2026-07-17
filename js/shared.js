@@ -132,9 +132,11 @@
       "Artesanal desde o primeiro forno", "Feito em Piraquara", "Fornadas pequenas",
       "Recheio generoso", "20 sabores no cardápio"
     ];
+    var sepSVG = '<svg class="marquee__sep crown-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false">' +
+      '<path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/>' +
+      '<path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>';
     var unitHTML = phrases.map(function (p) {
-      return '<span class="marquee__item">' + p + '</span>' +
-        '<img class="marquee__sep" src="assets/img/brand/simbolo-gold.png" alt="" width="14" height="14">';
+      return '<span class="marquee__item">' + p + '</span>' + sepSVG;
     }).join("");
     var SPEED = 65; // px/s — velocidade constante independente da largura de tela
 

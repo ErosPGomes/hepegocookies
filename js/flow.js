@@ -7,7 +7,7 @@
     ifoodUrl: "",                       // vazio → elementos [data-ifood] ocultos
     instagram: "https://www.instagram.com/hepegocookies/",
     intro: true,                        // intro de marca 1x/sessão (sessionStorage hepego_intro)
-    seasonal: { enabled: true, ids: ["milho", "pacoquita", "maca-do-amor"] },
+    seasonal: { enabled: true, ids: ["milho", "pacoquita", "maca-do-amor", "pe-de-moca"] },
     featured: ["ninho-nutella", "triplo-chocolate", "kinder", "chocolatudo", "oreo",
       "red-velvet", "floresta-negra", "torta-limao", "bicho-de-pe", "tradicional"],
     tracking: { ga4_id: "", meta_pixel_id: "", custom_webhook: "" }
@@ -64,7 +64,7 @@
       "A cobertura vermelha mais amada do arraiá, em cookie."),
     item("pacoquita", "Paçoquita", 12, "premium", { seasonal: true },
       "O amendoim da festa morando no centro do cookie."),
-    item("pe-de-moca", "Pé de Moça", 12, "premium", null,
+    item("pe-de-moca", "Pé de Moça", 12, "premium", { seasonal: true },
       "Amendoim com doce de leite, à moda antiga.")
   ];
 })();
