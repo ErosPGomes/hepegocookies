@@ -195,9 +195,16 @@
     check(); // revela de cara o que já está visível no primeiro paint
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    // rede de segurança: nunca deixa nada preso invisível, mesmo se o scroll não
-    // disparar como esperado em algum navegador/dispositivo específico.
+    // poll de reforço: em alguns navegadores/contextos o evento "scroll" nativo
+    // pode não disparar de forma confiável para scroll programático — o poll
+    // garante que o reveal funciona de qualquer jeito, sem depender só do evento.
+    var poll = window.setInterval(function () {
+      if (!pending.length) { window.clearInterval(poll); return; }
+      check();
+    }, 400);
+    // rede de segurança final: nunca deixa nada preso invisível.
     window.setTimeout(function () {
+      window.clearInterval(poll);
       if (pending.length) gsap.to(pending, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" });
     }, 5000);
   }
@@ -300,6 +307,7 @@
       done = true;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.clearInterval(poll);
       window.setTimeout(function () {
         var inst = saboresSwiper;
         if (!inst) return;
@@ -321,6 +329,12 @@
     check();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    // poll de reforço (mesmo motivo do initReveals): garante que funciona mesmo
+    // se o evento "scroll" nativo não disparar de forma confiável.
+    var poll = window.setInterval(function () {
+      if (done) { window.clearInterval(poll); return; }
+      check();
+    }, 400);
   }
 
   /* ---------- init ---------- */
