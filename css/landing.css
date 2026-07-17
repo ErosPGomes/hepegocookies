@@ -1,0 +1,545 @@
+/* ============================================================
+   landing.css — Hépego · Site 2.0 · seções da landing
+   ============================================================ */
+
+.fs-h2 { font-size: var(--fs-h2); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; }
+.fs-h2 em { font-weight: 300; }
+
+/* ---------- Intro de marca (overlay creme) ---------- */
+.brand-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+}
+.brand-intro img { width: 72px; height: 72px; }
+
+/* ============================================================
+   2. HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  padding-top: clamp(28px, 6vw, 64px);
+  padding-bottom: clamp(48px, 8vw, 96px);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 60px);
+  align-items: center;
+}
+.hero-copy { max-width: 620px; }
+.hero-title {
+  font-size: var(--fs-display);
+  font-weight: 300; /* Gyst Light: display arejado */
+  line-height: .98;
+  letter-spacing: -0.02em;
+  margin: 18px 0 22px;
+}
+.hero-title em { font-weight: 300; }
+.line-mask { display: block; overflow: hidden; }
+.line { display: block; }
+.hero-sub {
+  max-width: 54ch;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--brown);
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.hero-micro {
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+/* Composição do hero: uma única foto, reta, sem decoração sobreposta */
+.hero-media {
+  position: relative;
+  max-width: 480px;
+  margin-inline: auto;
+}
+.hero-photo { position: relative; margin: 0; }
+.hero-photo img { width: 100%; object-fit: cover; }
+.hero-photo--a {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.hero-photo--a > img {
+  border-radius: 18px;
+  aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 880px) {
+  .hero-grid { grid-template-columns: 55fr 45fr; gap: clamp(40px, 5vw, 72px); }
+  .hero-media { margin-inline: 0; margin-left: auto; max-width: 480px; }
+}
+
+/* ============================================================
+   3. MARQUEE — usa .marquee de base.css
+   ============================================================ */
+
+/* ============================================================
+   4. SABORES (carrossel)
+   ============================================================ */
+.sabores { padding-bottom: clamp(56px, 8vw, 100px); }
+.sabores-head { max-width: 640px; margin-bottom: clamp(32px, 5vw, 52px); }
+.sabores-head .eyebrow { margin-bottom: 14px; }
+.sabores-head h2 { margin-bottom: 14px; }
+.sabores-sub { color: var(--brown); max-width: 52ch; }
+
+.sabores-carousel { position: relative; }
+.sabores-carousel .swiper {
+  padding-inline: var(--gutter);
+  padding-bottom: 40px;
+  overflow: visible;
+}
+.sabores-carousel .swiper-wrapper {
+  /* fallback sem Swiper: rolagem horizontal */
+  gap: 0;
+}
+
+.flavor-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+.flavor-card:hover { box-shadow: var(--shadow-md); }
+.flavor-figure {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+.flavor-figure img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease-out;
+}
+.flavor-card:hover .flavor-figure img { transform: scale(1.04); }
+.flavor-pills {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.flavor-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 20px;
+  flex: 1;
+}
+.flavor-name { font-size: var(--fs-h3); }
+.flavor-blurb {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.flavor-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.flavor-line .name { font-family: var(--serif); font-weight: 500; }
+.leader-dots {
+  flex: 1;
+  height: 0;
+  align-self: flex-end;
+  margin-bottom: 5px;
+  border-bottom: 1.5px dotted var(--line);
+}
+.flavor-price {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--gold-text);
+  font-size: 1.05rem;
+}
+.flavor-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--espresso);
+  align-self: flex-start;
+  min-height: 44px;
+  transition: transform .2s ease, color .2s ease;
+}
+.flavor-cta:hover { transform: translateX(4px); color: var(--gold-text); }
+
+/* Slide final (espresso) */
+.flavor-card--end {
+  background: var(--espresso);
+  color: var(--cream-on-dark);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 40px 28px;
+}
+.flavor-card--end img { width: 52px; height: 52px; }
+.flavor-card--end .end-cta {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--cream-on-dark);
+  display: inline-flex;
+  gap: .4em;
+  transition: transform .2s ease, color .2s ease;
+}
+.flavor-card--end:hover .end-cta { transform: translateX(4px); color: var(--gold-on-dark); }
+
+/* Setas + progressbar */
+.sabores-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.carousel-arrow {
+  width: 44px; height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--espresso);
+  box-shadow: inset 0 0 0 1px var(--gold-soft);
+  transition: background-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+.carousel-arrow:hover { background: var(--gold-soft); box-shadow: inset 0 0 0 1px var(--gold); }
+.carousel-arrow.swiper-button-disabled { opacity: .35; pointer-events: none; }
+.sabores-progress.swiper-pagination-progressbar {
+  position: static;
+  height: 3px;
+  margin: 22px var(--gutter) 0;
+  width: auto;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.sabores-progress .swiper-pagination-progressbar-fill { background: var(--gold); }
+
+/* fallback sem Swiper: wrapper vira faixa rolável */
+.no-swiper .sabores-carousel .swiper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.no-swiper .sabores-carousel .swiper-wrapper { gap: 16px; }
+.no-swiper .flavor-slide { scroll-snap-align: start; }
+
+.flavor-slide { height: auto; display: flex; }
+
+/* ============================================================
+   5. BANNER JULHO
+   ============================================================ */
+.julho { background: var(--cream-deep); }
+.julho-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 7vw, 72px);
+  align-items: center;
+}
+.julho-copy { max-width: 560px; }
+.julho-copy .eyebrow { margin-bottom: 14px; }
+.julho-copy h2 { margin-bottom: 16px; }
+.julho-body { color: var(--brown); margin-bottom: 24px; max-width: 48ch; }
+.julho-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.junino-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+}
+.junino-bullet { width: 13px; height: 13px; align-self: center; }
+.junino-name { font-family: var(--serif); font-weight: 500; }
+.junino-blurb {
+  grid-column: 2 / 3;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.junino-price {
+  grid-row: 1;
+  grid-column: 3;
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--gold-text);
+}
+
+.julho-media {
+  position: relative;
+  width: 100%; /* dimensão explícita: evita colapso 0x0 do aspect-ratio com align-items:center no grid */
+  max-width: 480px;
+  margin-inline: auto;
+}
+.julho-frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 5;
+  background: var(--cream-deep);
+}
+.julho-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.julho-slide.is-active { opacity: 1; }
+.julho-accent {
+  position: absolute;
+  top: -16px; left: -12px;
+  width: 34px; height: 34px;
+  z-index: 1;
+}
+@media (min-width: 880px) {
+  .julho-grid { grid-template-columns: 1fr 1fr; }
+  .julho-media { margin-right: 0; }
+}
+
+/* ============================================================
+   6. ANATOMIA
+   ============================================================ */
+.anatomia-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 64px);
+  align-items: center;
+  position: relative;
+}
+.anatomia-media { margin: 0; }
+.anatomia-media img {
+  width: 100%;
+  border-radius: 18px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+}
+.anatomia-body h2 { margin-bottom: 28px; }
+.anatomia-list { display: flex; flex-direction: column; gap: 26px; }
+.anatomia-item {
+  position: relative;
+  z-index: 1; /* garante que número/texto pintem acima do fio (z-index:0) */
+  display: grid;
+  grid-template-columns: 44px 1fr; /* largura FIXA: a posição do fio (CSS, abaixo) não depende de métrica de fonte */
+  gap: 18px;
+  align-items: start;
+}
+.anatomia-thread {
+  position: absolute;
+  left: 22px; /* centro exato da coluna de 44px acima — puramente CSS, sem medição JS */
+  z-index: 0;
+  width: 1.5px;
+  background: var(--gold);
+  transform-origin: top;
+  pointer-events: none;
+}
+.anatomia-num {
+  position: relative;
+  z-index: 1;
+  background: var(--cream); /* defesa extra: ocupa o próprio espaço de forma opaca, então mesmo
+    que o fio (z-index:0) fique alguns px fora do lugar, ele nunca aparece por cima do dígito */
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--gold-text);
+  line-height: 1;
+  padding: 2px 6px 2px 0;
+}
+.anatomia-title { font-size: var(--fs-h3); margin-bottom: 4px; }
+.anatomia-item p { color: var(--brown); }
+.anatomia-micro {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14.5px;
+  max-width: 52ch;
+}
+@media (min-width: 880px) {
+  .anatomia-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   7. BANDA DE PESSOAS (espresso drench)
+   ============================================================ */
+.pessoas {
+  background: var(--espresso);
+  color: var(--cream-on-dark);
+}
+.pessoas-head { max-width: 620px; margin-bottom: clamp(36px, 5vw, 56px); }
+.pessoas-head h2 { margin-bottom: 16px; }
+.pessoas-body { color: oklch(84% 0.02 82); }
+.pessoas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 2vw, 20px);
+  align-items: start;
+}
+.pessoas-photo { margin: 0; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-md); }
+.pessoas-photo img { width: 100%; object-fit: cover; aspect-ratio: 4/5; }
+.pessoas-photo--tall img { aspect-ratio: 3/4.4; }
+.pessoas-photo:nth-child(2) { margin-top: clamp(20px, 4vw, 48px); }
+.pessoas-ig {
+  display: inline-flex;
+  margin-top: clamp(32px, 5vw, 48px);
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--gold-on-dark);
+  transition: opacity .2s ease;
+}
+.pessoas-ig:hover { opacity: .8; }
+@media (max-width: 640px) {
+  .pessoas-grid { grid-template-columns: 1fr 1fr; }
+  .pessoas-photo:nth-child(3) { grid-column: 1 / -1; }
+  .pessoas-photo--tall img { aspect-ratio: 4/5; }
+}
+
+/* ============================================================
+   8. COMO FUNCIONA
+   ============================================================ */
+.como-h { max-width: 16ch; margin-bottom: clamp(36px, 5vw, 56px); }
+.como-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 40px);
+  position: relative;
+}
+.como-step { position: relative; }
+.como-num {
+  display: block;
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 4.4rem);
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.como-title { font-size: var(--fs-h3); margin-bottom: 8px; }
+.como-step p { color: var(--brown); max-width: 32ch; }
+.como-micro {
+  margin-top: clamp(32px, 4vw, 44px);
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.como-cta { margin-top: 24px; }
+@media (min-width: 760px) {
+  .como-steps { grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 56px); }
+  .como-steps::before {
+    content: "";
+    position: absolute;
+    top: 34px; left: 8%; right: 8%;
+    height: 1px;
+    background: var(--gold-soft);
+    z-index: 0;
+  }
+  .como-step { z-index: 1; }
+  .como-num { background: var(--cream); display: inline-block; padding-right: 14px; }
+}
+
+/* ============================================================
+   9. DÚVIDAS
+   ============================================================ */
+.duvidas-inner { max-width: 780px; margin-inline: auto; }
+.duvidas-inner h2 { margin-bottom: clamp(28px, 4vw, 44px); text-align: center; }
+.duvidas-list { border-top: 1px solid var(--line); }
+.qa { border-bottom: 1px solid var(--line); }
+.qa summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 4px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  min-height: 44px;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa-mark {
+  position: relative;
+  flex: none;
+  width: 20px; height: 20px;
+}
+.qa-mark::before, .qa-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--gold-text);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.qa-mark::before { top: 9px; left: 2px; width: 16px; height: 2px; }
+.qa-mark::after { top: 2px; left: 9px; width: 2px; height: 16px; }
+.qa[open] .qa-mark::after { transform: scaleY(0); opacity: 0; }
+.qa-body { padding: 0 4px 24px; }
+.qa-body p { color: var(--brown); max-width: 62ch; }
+
+/* ============================================================
+   10. CTA FINAL
+   ============================================================ */
+.cta-final {
+  background: var(--cream-deep);
+  position: relative;
+  overflow: hidden;
+}
+.cta-final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/img/brand/simbolo-gold.png");
+  background-repeat: space;
+  background-size: 54px;
+  opacity: .04;
+  pointer-events: none;
+}
+.cta-final-inner {
+  position: relative;
+  text-align: center;
+  max-width: 660px;
+  margin-inline: auto;
+}
+.cta-final-inner h2 { margin-bottom: 16px; }
+.cta-final-body { color: var(--brown); margin-bottom: 30px; }
+.cta-final-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ============================================================
+   Estados de animação
+   Pré-esconde o hero ANTES do primeiro paint (evita flash) —
+   só quando JS presente (html.js, classe posta por script inline
+   no <head>) e sem reduced-motion. Fallback: html.gsap-timeout
+   (script inline após 1.4s) revela tudo se o GSAP não rodar.
+   Sem JS: nada é escondido.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js:not(.gsap-timeout) [data-hero-line] { transform: translateY(110%); }
+  html.js:not(.gsap-timeout) [data-hero],
+  html.js:not(.gsap-timeout) [data-hero-photo] { opacity: 0; }
+}

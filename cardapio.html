@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cardápio · Hépego · monte seu pedido e peça pelo WhatsApp</title>
+  <meta name="description" content="20 sabores de cookies artesanais da Hépego, de R$ 6 a R$ 15. Toque para adicionar; o pedido abre pronto no WhatsApp.">
+
+  <link rel="icon" href="assets/img/brand/favicon.png">
+
+  <link rel="preload" href="assets/fonts/gyst-medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/gyst-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cardapio.css">
+
+  <!-- vendor (clássicos, defer, na ordem): gsap → ScrollTrigger → lenis → swiper -->
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/vendor/swiper-bundle.min.js"></script>
+  <!-- app (clássicos, defer): flow → shared → cardapio -->
+  <script defer src="js/flow.js"></script>
+  <script defer src="js/shared.js"></script>
+  <script defer src="js/cardapio.js"></script>
+</head>
+<body class="page-cardapio">
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <!-- 1. Header (compartilhado — CTA vira "Ver pedido") -->
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="header-logo" href="index.html" aria-label="Hépego · página inicial">
+        <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+        <span class="logo-word">HÉPEGO</span>
+      </a>
+      <nav class="header-nav" aria-label="Seções do site">
+        <a href="index.html#sabores">Sabores</a>
+        <a href="index.html#julho">Julho</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#duvidas">Dúvidas</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn--solid header-cta" type="button" data-cart-open aria-label="Ver pedido, 0 itens" hidden>
+          Ver pedido<span class="cart-badge" data-cart-badge aria-hidden="true">0</span>
+        </button>
+        <button class="hamburger" type="button" data-menu-open aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile (compartilhado) -->
+  <div class="mobile-menu" id="mobile-menu" data-menu role="dialog" aria-modal="true" aria-label="Menu de navegação" hidden>
+    <div class="mm-top">
+      <span class="header-logo mm-logo">
+        <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+        <span class="logo-word">HÉPEGO</span>
+      </span>
+      <button class="mm-close" type="button" data-menu-close aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="mm-nav" aria-label="Navegação principal">
+      <a href="index.html#sabores" data-menu-link>Sabores</a>
+      <a href="index.html#julho" data-menu-link>Julho</a>
+      <a href="index.html#como-funciona" data-menu-link>Como funciona</a>
+      <a href="index.html#duvidas" data-menu-link>Dúvidas</a>
+      <a href="cardapio.html" data-menu-link>Cardápio</a>
+    </nav>
+    <div class="mm-foot">
+      <a class="btn btn--wa" href="#" data-wa="menu">Pedir no WhatsApp</a>
+      <p class="mm-micro"><img src="assets/img/brand/simbolo-gold.png" alt="" width="12" height="12" loading="lazy">Piraquara, PR</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero compacto -->
+    <section class="cardapio-hero" aria-labelledby="cardapio-h">
+      <div class="container">
+        <a class="breadcrumb" href="index.html">← Voltar ao site</a>
+        <h1 class="serif" id="cardapio-h">O cardápio <em>completo</em>.</h1>
+        <p class="cardapio-hero-sub">20 sabores, de R$ 6 a R$ 15. Toque para adicionar; o pedido abre pronto no WhatsApp.</p>
+      </div>
+    </section>
+
+    <!-- Chips de filtro (sticky) -->
+    <div class="filters" data-filters>
+      <div class="container">
+        <div class="filters-row" role="radiogroup" aria-label="Filtrar sabores">
+          <button class="chip is-active" type="button" role="radio" aria-checked="true" tabindex="0" data-filter="todos">Todos</button>
+          <button class="chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-filter="especiais">★ Especiais</button>
+          <button class="chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-filter="festivo">Festivo · Julho</button>
+          <button class="chip" type="button" role="radio" aria-checked="false" tabindex="-1" data-filter="biscoitos">Biscoitos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de produtos (JS-renderizado) -->
+    <section class="cardapio-section" aria-label="Cardápio de sabores">
+      <div class="container">
+        <div class="cardapio-grid" id="menu-grid" data-menu-grid></div>
+        <p class="cardapio-empty" data-empty hidden>Nenhum sabor neste filtro por enquanto.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (compartilhado) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="header-logo footer-logo">
+            <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+            <span class="logo-word">HÉPEGO</span>
+          </span>
+          <p class="footer-tagline">Artesanal desde o primeiro forno</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html#sabores">Sabores</a></li>
+            <li><a href="index.html#julho">Julho</a></li>
+            <li><a href="index.html#como-funciona">Como funciona</a></li>
+            <li><a href="index.html#duvidas">Dúvidas</a></li>
+            <li><a href="cardapio.html">Cardápio</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="#" data-ig-link>Instagram @hepegocookies</a></li>
+            <li><a href="#" data-wa-link>WhatsApp · Fazer pedido</a></li>
+            <li><a href="#" data-ifood hidden>Peça no iFood</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <img src="assets/img/brand/simbolo-gold.png" alt="" width="18" height="18" loading="lazy">
+        <span>© 2026 Hépego Cookies · Piraquara, PR</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Barra fixa de pedido -->
+  <div class="orderbar" id="orderbar" data-orderbar aria-live="polite" hidden>
+    <div class="container orderbar-inner">
+      <div class="orderbar-info">
+        <span class="orderbar-count" data-bar-count>0 itens</span>
+        <span class="orderbar-total serif" data-bar-total>R$ 0,00</span>
+      </div>
+      <button class="btn btn--wa" type="button" data-cart-open>Ver pedido</button>
+    </div>
+  </div>
+
+  <!-- Sheet (dialog modal) -->
+  <div class="backdrop" data-backdrop hidden></div>
+  <aside class="sheet" id="sheet" data-sheet role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <div class="sheet-head">
+      <h2 class="serif" id="sheet-title">Seu pedido</h2>
+      <button class="sheet-close" type="button" data-sheet-close aria-label="Fechar pedido">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="sheet-scroll">
+      <ul class="sheet-items" data-sheet-items></ul>
+      <div class="sheet-subtotal">
+        <span>Subtotal</span>
+        <span class="serif" data-sheet-total>R$ 0,00</span>
+      </div>
+      <p class="sheet-note">A entrega é cobrada à parte: o frete é combinado no WhatsApp.</p>
+
+      <fieldset class="sheet-field">
+        <legend>Pagamento</legend>
+        <div class="pay-options">
+          <label class="pay-opt"><input type="radio" name="pay" value="Pix" checked><span>Pix</span></label>
+          <label class="pay-opt"><input type="radio" name="pay" value="Dinheiro"><span>Dinheiro</span></label>
+          <label class="pay-opt"><input type="radio" name="pay" value="Cartão"><span>Cartão</span></label>
+        </div>
+      </fieldset>
+
+      <div class="sheet-field">
+        <label class="sheet-label" for="f-nome">Nome (opcional)</label>
+        <input class="sheet-input" id="f-nome" type="text" autocomplete="name" placeholder="Como te chamamos?">
+      </div>
+      <div class="sheet-field">
+        <label class="sheet-label" for="f-obs">Observações (opcional)</label>
+        <textarea class="sheet-input" id="f-obs" rows="2" placeholder="Algum detalhe do pedido?"></textarea>
+      </div>
+    </div>
+    <div class="sheet-foot">
+      <button class="btn btn--wa btn--lg" type="button" data-sheet-send>Enviar pedido no WhatsApp</button>
+      <p class="sheet-micro">Você revisa tudo no WhatsApp antes de confirmar. Nada é cobrado agora.</p>
+    </div>
+  </aside>
+
+  <!-- Snackbar -->
+  <div class="snack" data-snack role="status" hidden>
+    <span>Recuperamos seu pedido de antes.</span>
+    <button class="snack-action" type="button" data-snack-reset>Recomeçar</button>
+  </div>
+</body>
+</html>

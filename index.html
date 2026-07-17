@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hépego · Cookies artesanais em Piraquara, feitos em fornadas pequenas</title>
+  <meta name="description" content="A casquinha estala, o recheio escorre. Cookies artesanais em Piraquara com 20 sabores no cardápio. Monte seu pedido e peça pelo WhatsApp.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hépego · Cookies artesanais em Piraquara, feitos em fornadas pequenas">
+  <meta property="og:description" content="A casquinha estala, o recheio escorre. Cookies artesanais em Piraquara com 20 sabores no cardápio. Monte seu pedido e peça pelo WhatsApp.">
+  <meta property="og:image" content="assets/img/photos/pilha-ninho-nutella.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/brand/favicon.png">
+
+  <link rel="preload" href="assets/img/photos/pilha-ninho-nutella.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/fonts/gyst-light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/gyst-lightitalic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/gyst-medium.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- guarda anti-flash: marca JS presente antes do 1º paint; fallback revela após 1.4s se o GSAP não rodar -->
+  <script>(function(d){d.classList.add("js");setTimeout(function(){d.classList.add("gsap-timeout")},1400)})(document.documentElement)</script>
+
+  <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/landing.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Hépego Cookies",
+    "description": "Cookies artesanais em fornadas pequenas, com recheio generoso. 20 sabores no cardápio.",
+    "servesCuisine": "Cookies artesanais",
+    "areaServed": "Piraquara, PR",
+    "address": { "@type": "PostalAddress", "addressLocality": "Piraquara", "addressRegion": "PR", "addressCountry": "BR" },
+    "url": "index.html"
+  }
+  </script>
+
+  <!-- vendor (clássicos, defer, na ordem): gsap → ScrollTrigger → lenis → swiper -->
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/vendor/swiper-bundle.min.js"></script>
+  <!-- app (clássicos, defer): flow → shared → landing -->
+  <script defer src="js/flow.js"></script>
+  <script defer src="js/shared.js"></script>
+  <script defer src="js/landing.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <!-- 0. Intro de marca (JS injeta o overlay 1x/sessão) -->
+
+  <!-- 1. Header (compartilhado) -->
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="header-logo" href="index.html" aria-label="Hépego · página inicial">
+        <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+        <span class="logo-word">HÉPEGO</span>
+      </a>
+      <nav class="header-nav" aria-label="Seções do site">
+        <a href="index.html#sabores">Sabores</a>
+        <a href="index.html#julho">Julho</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#duvidas">Dúvidas</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--solid header-cta" href="cardapio.html">Fazer pedido</a>
+        <button class="hamburger" type="button" data-menu-open aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile (compartilhado) -->
+  <div class="mobile-menu" id="mobile-menu" data-menu role="dialog" aria-modal="true" aria-label="Menu de navegação" hidden>
+    <div class="mm-top">
+      <span class="header-logo mm-logo">
+        <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+        <span class="logo-word">HÉPEGO</span>
+      </span>
+      <button class="mm-close" type="button" data-menu-close aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="mm-nav" aria-label="Navegação principal">
+      <a href="index.html#sabores" data-menu-link>Sabores</a>
+      <a href="index.html#julho" data-menu-link>Julho</a>
+      <a href="index.html#como-funciona" data-menu-link>Como funciona</a>
+      <a href="index.html#duvidas" data-menu-link>Dúvidas</a>
+      <a href="cardapio.html" data-menu-link>Cardápio</a>
+    </nav>
+    <div class="mm-foot">
+      <a class="btn btn--wa" href="#" data-wa="menu">Pedir no WhatsApp</a>
+      <p class="mm-micro"><img src="assets/img/brand/simbolo-gold.png" alt="" width="12" height="12" loading="lazy">Piraquara, PR</p>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- 2. Hero -->
+    <section class="hero" aria-label="Apresentação">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-hero>Confeitaria artesanal · Piraquara, PR</p>
+          <h1 class="hero-title serif">
+            <span class="line-mask"><span class="line" data-hero-line>A casquinha estala.</span></span>
+            <span class="line-mask"><span class="line" data-hero-line>O recheio <em>escorre</em>.</span></span>
+          </h1>
+          <p class="hero-sub" data-hero>Cookies assados em fornadas pequenas, com recheio generoso de verdade. Você escolhe no cardápio; o pedido chega montado no nosso WhatsApp.</p>
+          <div class="hero-ctas" data-hero>
+            <a class="btn btn--solid btn--lg" href="cardapio.html">Explorar o cardápio</a>
+            <a class="btn btn--outline btn--lg" href="#" data-wa="hero">Pedir no WhatsApp</a>
+          </div>
+          <p class="hero-micro" data-hero>Pix, cartão ou dinheiro · Entrega ou retirada combinada na conversa</p>
+        </div>
+
+        <div class="hero-media" aria-hidden="false">
+          <figure class="hero-photo hero-photo--a" data-hero-photo data-parallax="-6">
+            <img src="assets/img/photos/pilha-ninho-nutella.webp" alt="Pilha de cookies Ninho com Nutella™ com recheio escorrendo" width="720" height="900" fetchpriority="high" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Marquee -->
+    <div class="marquee full-bleed" data-marquee aria-hidden="true">
+      <div class="marquee__track" data-marquee-track>
+        <div class="marquee__group" data-marquee-group></div>
+      </div>
+    </div>
+
+    <!-- 4. Sabores (carrossel Swiper) -->
+    <section class="section sabores" id="sabores" aria-labelledby="sabores-h">
+      <div class="container sabores-head" data-reveal>
+        <p class="eyebrow">Os favoritos da casa</p>
+        <h2 class="serif fs-h2" id="sabores-h">Escolher só um é a parte <em>difícil</em>.</h2>
+        <p class="sabores-sub">Arraste para conhecer os mais pedidos. Tocou, já entrou: o pedido inteiro se resolve no cardápio.</p>
+      </div>
+
+      <div class="sabores-carousel">
+        <div class="swiper" data-sabores-swiper>
+          <div class="swiper-wrapper" data-sabores-track>
+            <!-- slides injetados por landing.js a partir de CONFIG.featured -->
+          </div>
+          <div class="swiper-pagination sabores-progress" data-sabores-progress></div>
+        </div>
+        <div class="sabores-nav container">
+          <button class="carousel-arrow" type="button" data-sabores-prev aria-label="Sabores anteriores">‹</button>
+          <button class="carousel-arrow" type="button" data-sabores-next aria-label="Próximos sabores">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Banner Julho -->
+    <section class="section julho full-bleed" id="julho" aria-labelledby="julho-h">
+      <div class="container julho-grid">
+        <div class="julho-copy" data-reveal>
+          <p class="eyebrow">Sabores juninos · por tempo limitado</p>
+          <h2 class="serif fs-h2" id="julho-h">O arraiá entrou no <em>forno</em>.</h2>
+          <p class="julho-body">Milho cremoso, paçoquita e maçã do amor: a quermesse inteira em três cookies. Quando o arraiá for embora, eles vão junto.</p>
+          <ul class="julho-list" data-junino-list>
+            <!-- injetada por landing.js -->
+          </ul>
+          <a class="btn btn--solid btn--lg" href="cardapio.html#festivos" data-seasonal-cta>Pedir os juninos</a>
+        </div>
+        <div class="julho-media">
+          <div class="julho-frame" data-julho-frame>
+            <img class="julho-slide is-active" src="assets/img/junino-milho.webp" alt="Cookie de milho da Hépego, sabor junino" width="640" height="800" decoding="async">
+            <img class="julho-slide" src="assets/img/junino-pacoquita.webp" alt="Cookie de paçoquita da Hépego, sabor junino" width="640" height="800" loading="lazy" decoding="async">
+            <img class="julho-slide" src="assets/img/junino-maca.webp" alt="Cookie Maçã do Amor da Hépego, sabor junino" width="640" height="800" loading="lazy" decoding="async">
+            <img class="julho-slide" src="assets/img/flavors/pe-de-moca.webp" alt="Cookie Pé de Moça da Hépego" width="640" height="800" loading="lazy" decoding="async">
+          </div>
+          <img class="julho-accent" src="assets/img/brand/simbolo-gold.png" alt="" width="34" height="34">
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Anatomia -->
+    <section class="section anatomia" aria-labelledby="anatomia-h">
+      <div class="container anatomia-grid">
+        <figure class="anatomia-media" data-reveal>
+          <img src="assets/img/photos/macro-ninho-nutella.webp" alt="Macro do cookie Ninho com Nutella™ mostrando casquinha, massa e recheio" width="720" height="720" loading="lazy" decoding="async">
+        </figure>
+        <div class="anatomia-body">
+          <h2 class="serif fs-h2" id="anatomia-h" data-reveal>Por dentro, é outra <em>história</em>.</h2>
+          <ol class="anatomia-list">
+            <li class="anatomia-item" data-reveal>
+              <span class="anatomia-num serif">01</span>
+              <div>
+                <h3 class="anatomia-title serif">A casquinha</h3>
+                <p>Fina e dourada, com estalo de forno. Não de pacote.</p>
+              </div>
+            </li>
+            <li class="anatomia-item" data-reveal>
+              <span class="anatomia-num serif">02</span>
+              <div>
+                <h3 class="anatomia-title serif">A massa</h3>
+                <p>Manteiga de verdade e peso de coisa feita à mão: densa por fora, macia no centro.</p>
+              </div>
+            </li>
+            <li class="anatomia-item" data-reveal>
+              <span class="anatomia-num serif">03</span>
+              <div>
+                <h3 class="anatomia-title serif">O recheio</h3>
+                <p>Generoso até a última mordida. É por ele que um cookie nunca é o bastante.</p>
+              </div>
+            </li>
+          </ol>
+          <p class="anatomia-micro" data-reveal>Nutella™, Kinder, Oreo: os recheios que você já ama, no cookie que você ainda não conhecia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Banda de pessoas (espresso drench) -->
+    <section class="section pessoas full-bleed" aria-labelledby="pessoas-h">
+      <div class="container">
+        <div class="pessoas-head" data-reveal>
+          <h2 class="serif fs-h2" id="pessoas-h">Quem prova, <em>entende</em>.</h2>
+          <p class="pessoas-body">O primeiro pedido nasce da curiosidade. O segundo já vem com sabor favorito, quantidade certa e dia combinado.</p>
+        </div>
+        <div class="pessoas-grid">
+          <figure class="pessoas-photo pessoas-photo--tall" data-reveal>
+            <img src="assets/img/photos/mordida-kinder.webp" alt="Mordida no cookie Kinder, recheio de chocolate à mostra" width="520" height="680" loading="lazy" decoding="async">
+          </figure>
+          <figure class="pessoas-photo" data-reveal>
+            <img src="assets/img/people/oreo-mordida.webp" alt="Mordida no cookie Oreo, recheio branco e pedaços de Oreo à mostra" width="520" height="560" loading="lazy" decoding="async">
+          </figure>
+          <figure class="pessoas-photo pessoas-photo--tall" data-reveal>
+            <img src="assets/img/people/redvelvet-maos.webp" alt="Cookie Red Velvet partido nas mãos, recheio cremoso escorrendo" width="520" height="640" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <a class="pessoas-ig" href="#" data-ig-link data-reveal>Acompanhe as fornadas no Instagram → @hepegocookies</a>
+      </div>
+    </section>
+
+    <!-- 8. Como funciona -->
+    <section class="section como" id="como-funciona" aria-labelledby="como-h">
+      <div class="container">
+        <h2 class="serif fs-h2 como-h" id="como-h" data-reveal>Pedir leva um <em>minuto</em>.</h2>
+        <ol class="como-steps">
+          <li class="como-step" data-reveal>
+            <span class="como-num serif">1</span>
+            <h3 class="como-title serif">Monte seu pedido</h3>
+            <p>Escolha no cardápio e ajuste as quantidades. Sem cadastro, sem aplicativo.</p>
+          </li>
+          <li class="como-step" data-reveal>
+            <span class="como-num serif">2</span>
+            <h3 class="como-title serif">Envie pelo WhatsApp</h3>
+            <p>O pedido chega montado na conversa, listado item por item.</p>
+          </li>
+          <li class="como-step" data-reveal>
+            <span class="como-num serif">3</span>
+            <h3 class="como-title serif">Receba do seu jeito</h3>
+            <p>Confirmamos pagamento (Pix, cartão ou dinheiro) e entrega ou retirada com você.</p>
+          </li>
+        </ol>
+        <p class="como-micro" data-reveal>O frete é combinado na conversa, conforme a região.</p>
+        <div class="como-cta" data-reveal>
+          <a class="btn btn--solid btn--lg" href="cardapio.html">Começar meu pedido</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Dúvidas -->
+    <section class="section duvidas" id="duvidas" aria-labelledby="duvidas-h">
+      <div class="container duvidas-inner">
+        <h2 class="serif fs-h2" id="duvidas-h" data-reveal>Perguntas que chegam <em>toda semana</em>.</h2>
+        <div class="duvidas-list">
+          <details class="qa" data-reveal>
+            <summary><span>Como funciona a entrega?</span><span class="qa-mark" aria-hidden="true"></span></summary>
+            <div class="qa-body"><p>Depois que o pedido chega no WhatsApp, combinamos entrega ou retirada e o frete conforme a região. Tudo confirmado antes de qualquer cobrança.</p></div>
+          </details>
+          <details class="qa" data-reveal>
+            <summary><span>Vocês aceitam encomendas para festas e presentes?</span><span class="qa-mark" aria-hidden="true"></span></summary>
+            <div class="qa-body"><p>Sim! Encomendas maiores para festas e presentes são combinadas direto no WhatsApp — quanto antes avisar, melhor para a fornada.</p></div>
+          </details>
+          <details class="qa" data-reveal>
+            <summary><span>Quais formas de pagamento?</span><span class="qa-mark" aria-hidden="true"></span></summary>
+            <div class="qa-body"><p>Pix, dinheiro ou cartão. Você escolhe ao montar o pedido e confirma na conversa.</p></div>
+          </details>
+          <details class="qa" data-reveal>
+            <summary><span>Os sabores mudam?</span><span class="qa-mark" aria-hidden="true"></span></summary>
+            <div class="qa-body"><p>São 20 sabores no cardápio, e alguns entram por temporada: em julho, os juninos Milho, Paçoquita e Maçã do Amor.</p></div>
+          </details>
+          <details class="qa" data-reveal>
+            <summary><span>De onde vêm os cookies?</span><span class="qa-mark" aria-hidden="true"></span></summary>
+            <div class="qa-body"><p>Da nossa cozinha em Piraquara, PR, região de Curitiba. Artesanal desde o primeiro forno.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CTA final -->
+    <section class="section cta-final full-bleed" aria-labelledby="cta-h">
+      <div class="container cta-final-inner" data-reveal>
+        <h2 class="serif fs-h2" id="cta-h">A vontade não vai <em>embora</em> sozinha.</h2>
+        <p class="cta-final-body">Escolha os sabores agora; o resto a gente combina na conversa.</p>
+        <div class="cta-final-ctas">
+          <a class="btn btn--solid btn--lg" href="cardapio.html">Ver o cardápio</a>
+          <a class="btn btn--outline btn--lg" href="#" data-wa="cta-final">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 11. Footer (compartilhado) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="header-logo footer-logo">
+            <svg class="logo-mark" viewBox="44 4 60 40" aria-hidden="true" focusable="false"><path d="M73.47,33.81c-.61,0-1.14-.39-1.31-.98l-5.76-19.15,7.07-6.41,7.06,6.41-5.75,19.15c-.18.58-.7.98-1.31.98ZM69.38,14.51l4.09,13.6,4.09-13.6-4.09-3.71-4.09,3.71Z"/><path d="M90.88,41.41h-34.82l-9.72-21.58h11.81l5.55,12.34h19.54l5.55-12.34h11.81l-9.72,21.58ZM57.75,38.8h31.44l7.36-16.35h-6.08l-5.55,12.34h-22.92l-5.55-12.34h-6.08l7.36,16.35Z"/></svg>
+            <span class="logo-word">HÉPEGO</span>
+          </span>
+          <p class="footer-tagline">Artesanal desde o primeiro forno</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <ul>
+            <li><a href="index.html#sabores">Sabores</a></li>
+            <li><a href="index.html#julho">Julho</a></li>
+            <li><a href="index.html#como-funciona">Como funciona</a></li>
+            <li><a href="index.html#duvidas">Dúvidas</a></li>
+            <li><a href="cardapio.html">Cardápio</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="#" data-ig-link>Instagram @hepegocookies</a></li>
+            <li><a href="#" data-wa-link>WhatsApp · Fazer pedido</a></li>
+            <li><a href="#" data-ifood hidden>Peça no iFood</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <img src="assets/img/brand/simbolo-gold.png" alt="" width="18" height="18" loading="lazy">
+        <span>© 2026 Hépego Cookies · Piraquara, PR</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
