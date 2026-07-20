@@ -1,0 +1,222 @@
+/* ============================================================
+   blog.css — Hépego · listagem e artigos
+   Usa os tokens de base.css (cream/espresso/gold, Gyst).
+   Páginas geradas por scripts/build-blog.mjs a partir dos .md.
+   ============================================================ */
+
+.blog-wrap {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: clamp(28px, 6vw, 64px) var(--gutter) clamp(48px, 8vw, 88px);
+}
+
+/* item de nav da seção atual (só existe nas páginas do blog) */
+.header-nav a.is-current { color: var(--espresso); }
+.header-nav a.is-current::after { transform: scaleX(1); }
+
+/* ---------------- artigo ---------------- */
+.blog-voltar {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold-text);
+}
+.blog-voltar:hover { color: var(--espresso); }
+
+.blog-artigo h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 5.2vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 10px 0 12px;
+}
+.blog-meta {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: clamp(24px, 4vw, 38px);
+}
+.blog-capa {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 0 0 clamp(24px, 4vw, 36px);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-artigo h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  margin: 1.9em 0 .5em;
+}
+.blog-artigo h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.9vw, 1.35rem);
+  margin: 1.5em 0 .4em;
+}
+.blog-artigo p,
+.blog-artigo li {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--espresso);
+}
+.blog-artigo p { margin: 0 0 1em; }
+.blog-artigo ul,
+.blog-artigo ol { margin: 1em 0; padding-left: 1.4em; list-style: revert; }
+.blog-artigo li { margin: .4em 0; }
+.blog-artigo li::marker { color: var(--gold-text); }
+.blog-artigo strong { font-weight: 650; }
+.blog-artigo a {
+  color: var(--gold-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.blog-artigo a:hover { color: var(--espresso); }
+
+.blog-artigo blockquote {
+  margin: 1.6em 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--gold);
+  color: var(--brown);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.blog-artigo hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-soft), var(--line) 50%, transparent);
+  margin: 2.4em 0;
+}
+.blog-artigo img { max-width: 100%; height: auto; border-radius: var(--radius); margin: 1.4em 0; }
+.blog-artigo table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6em 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.blog-artigo th,
+.blog-artigo td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.blog-artigo th {
+  background: var(--cream-deep);
+  font-family: var(--serif);
+  font-weight: 500;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: clamp(28px, 5vw, 44px) 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.blog-tags li {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--gold-text);
+  background: oklch(72% 0.09 85 / .14);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+/* ---------------- CTA de fim de artigo ---------------- */
+.blog-cta {
+  margin-top: clamp(40px, 6vw, 64px);
+  padding: clamp(26px, 4vw, 38px);
+  border-radius: var(--radius);
+  background: var(--cream-deep);
+  text-align: center;
+}
+.blog-cta-txt {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.25;
+  max-width: 26ch;
+  margin: 0 auto 20px;
+}
+.blog-cta-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ---------------- listagem ---------------- */
+.blog-lista .eyebrow { margin-bottom: 12px; }
+.blog-lista h1 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.blog-lista .sub {
+  color: var(--brown);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.blog-card {
+  display: flex;
+  gap: clamp(16px, 3vw, 24px);
+  align-items: flex-start;
+  padding: clamp(22px, 3vw, 30px) 0;
+  border-top: 1px solid var(--line);
+  color: var(--espresso);
+}
+.blog-card:last-of-type { border-bottom: 1px solid var(--line); }
+.blog-card-thumb {
+  width: 190px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  flex: none;
+}
+.blog-card-corpo { flex: 1; min-width: 0; }
+.blog-card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 8px;
+  transition: color .18s ease;
+}
+.blog-card:hover h2 { color: var(--gold-text); }
+.blog-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--brown);
+  margin: 0 0 10px;
+}
+.blog-card .blog-meta { margin: 0; }
+.blog-vazio {
+  padding: 56px 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 560px) {
+  .blog-card { flex-direction: column; }
+  .blog-card-thumb { width: 100%; }
+}

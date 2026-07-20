@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erospgomes.github.io/hepegocookies/sitemap.xml
