@@ -73,10 +73,10 @@ Para que você conheça a nossa linha completa e entenda onde aplicamos nossos i
 
 | Categoria do Sabor | Sabor do Cookie | Características Principais | Detalhe do Recheio ou Cobertura |
 | :--- | :--- | :--- | :--- |
-| **Premium (Selo Dourado)** | **Ninho com Nutella™** | Massa de baunilha tradicional | Recheio generoso de Nutella™ original com leite Ninho salpicado |
-| **Premium (Selo Dourado)** | **Kinder** | Massa de baunilha com gotas | Recheio duplo de chocolate ao leite e chocolate branco (nunca creme de avelã) |
-| **Premium (Selo Dourado)** | **Floresta Negra** | Massa de chocolate intenso | Recheio de chocolate meio amargo com pedaços de cereja |
-| **Premium (Selo Dourado)** | **Oreo** | Massa escura de cacau | Pedaços de biscoito Oreo na massa e recheio cremoso de baunilha |
+| **Premium** | **Ninho com Nutella™** | Massa de baunilha tradicional | Recheio generoso de Nutella™ original com leite Ninho salpicado |
+| **Premium** | **Kinder** | Massa de baunilha com gotas | Recheio duplo de chocolate ao leite e chocolate branco (nunca creme de avelã) |
+| **Premium** | **Floresta Negra** | Massa de chocolate intenso | Recheio de chocolate meio amargo com pedaços de cereja |
+| **Premium** | **Oreo** | Massa escura de cacau | Pedaços de biscoito Oreo na massa e recheio cremoso de baunilha |
 | **Regular** | **Tradicional** | Clássico americano | Massa de baunilha com muitas gotas de chocolate meio amargo |
 | **Regular** | **Triplo Chocolate** | Intenso e macio | Três tipos de chocolate misturados em uma massa de cacau nobre |
 | **Regular** | **Blue Velvet** | Frutado e elegante | Massa aveludada azulada com mirtilos frescos selecionados |
