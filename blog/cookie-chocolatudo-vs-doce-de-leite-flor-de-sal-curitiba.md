@@ -1,12 +1,12 @@
 ---
-title: "Cookie Chocolatudo vs. Doce de Leite com Flor de Sal: Qual o Melhor para o Café da Tarde na Capital Paranaense?"
+title: "Cookie Chocolatudo vs. doce de leite com flor de sal: qual o melhor para o café da tarde na capital paranaense?"
 description: "Dúvida para o café da tarde em Curitiba? Compare o Cookie Chocolatudo e o Doce de Leite com Flor de Sal da Hépego Cookies. Peça no iFood ou encomende!"
 date: 2026-07-23
 tags: []
 slug: cookie-chocolatudo-vs-doce-de-leite-flor-de-sal-curitiba
 ---
 
-# Cookie Chocolatudo vs. Doce de Leite com Flor de Sal: Qual o Melhor para o Café da Tarde na Capital Paranaense?
+# Cookie Chocolatudo vs. doce de leite com flor de sal: qual o melhor para o café da tarde na capital paranaense?
 
 Para quem busca o melhor acompanhamento para o clássico dia frio curitibano, encontrar o **cookie de doce de leite com flor de sal em curitiba** é o verdadeiro prêmio do café da tarde. A disputa entre a intensidade do nosso Cookie Chocolatudo e o equilíbrio sofisticado do Doce de Leite com Flor de Sal divide opiniões na nossa cookieria artesanal em Curitiba, mas ambos entregam o que há de melhor em confeitaria afetiva: massa macia por dentro, bordas crocantes e recheio generoso que abraça a alma.
 
