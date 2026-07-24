@@ -1,12 +1,12 @@
 ---
-title: "4 Bebidas Quentes que Combinam com o Nosso Cookie de Doce de Leite com Flor de Sal no Inverno de Curitiba"
+title: "4 bebidas quentes que combinam com o nosso cookie de doce de leite com flor de sal no inverno de Curitiba"
 description: "Descubra as melhores bebidas quentes para harmonizar com o nosso cookie de doce de leite com flor de sal em Curitiba. Peça no iFood ou encomende!"
 date: 2026-07-23
 tags: []
 slug: cookie-doce-de-leite-flor-de-sal-curitiba
 ---
 
-# 4 Bebidas Quentes que Combinam com o Nosso Cookie de Doce de Leite com Flor de Sal no Inverno de Curitiba
+# 4 bebidas quentes que combinam com o nosso cookie de doce de leite com flor de sal no inverno de Curitiba
 
 Para quem busca o autêntico cookie de doce de leite com flor de sal em curitiba, a combinação ideal exige uma bebida quente que equilibre a doçura do recheio cremoso com a intensidade de um contraste salgado. No inverno curitibano, esse par se torna um verdadeiro ritual de conforto para aquecer as tardes frias e cinzentas da nossa cidade.
 
