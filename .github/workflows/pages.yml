@@ -28,6 +28,9 @@ jobs:
           node-version: 22
 
       - name: Renderiza o blog (.md -> HTML)
+        env:
+          # Domínio próprio. Canonical, og:url, sitemap e JSON-LD saem daqui.
+          BLOG_BASE_URL: https://hepego.com.br
         run: |
           npm install marked@15.0.7 --no-save --no-audit --no-fund
           node scripts/build-blog.mjs

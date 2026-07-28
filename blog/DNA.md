@@ -7,9 +7,9 @@ mudarem — o gerador (humano ou agente) sempre confia no que está escrito aqui
 ## Quem somos
 
 Hépego Cookies é uma marca de cookies artesanais em fornadas pequenas, sediada em
-Piraquara-PR (região metropolitana de Curitiba). Site: `https://erospgomes.github.io/hepegocookies/`
-(domínio próprio pode vir no futuro — o build lê `BLOG_BASE_URL` do ambiente, então
-não tem path fixo pra mudar). Pedidos por WhatsApp (`https://wa.me/5541987172296`,
+Piraquara-PR (região metropolitana de Curitiba). Site: `https://hepego.com.br`
+(o build lê `BLOG_BASE_URL` do ambiente, definido no workflow — não escreva URL
+absoluta no corpo dos artigos). Pedidos por WhatsApp (`https://wa.me/5541987172296`,
 botão "Pedir no WhatsApp" no site) ou iFood. Instagram: `@hepegocookies`. Cardápio
 completo em `/cardapio.html`.
 
