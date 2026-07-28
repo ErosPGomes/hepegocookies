@@ -11,7 +11,7 @@ Muita gente acha que cookie de festa junina é só um tema de embalagem, com o m
 
 ## Quais são os sabores juninos da Hépego?
 
-São quatro, todos a R$12 e sem selo dourado. Esse selo é reservado pros premium fixos do cardápio, como Kinder e Ninho com Nutella™; os juninos seguem outra lógica, de safra, não de linha nobre:
+São quatro, todos a R$12, com receita e recheio pensados pra lembrar comida de festa de verdade:
 
 - **Milho**: massa amarela com gosto de curau, macia e adocicada.
 - **Maçã do Amor**: cobertura vermelha crocante por cima de um recheio que lembra a maçã do amor de quermesse.
@@ -36,27 +36,19 @@ O Pé de Moça fica pra quem prefere doce de leite tradicional, sem chocolate no
 
 Na dúvida, dá pra pedir uma combinação pequena com dois ou três sabores diferentes e decidir o favorito na prática. Isso é bem comum entre quem pede pela primeira vez, principalmente em grupo, quando cada pessoa acaba preferindo um.
 
-## Por que os sabores juninos não têm selo dourado
-
-Vale explicar, porque já apareceu como dúvida por aqui. O selo dourado da Hépego marca os sabores premium fixos do cardápio: Kinder, Ninho com Nutella™, Floresta Negra, Oreo. Não é uma nota de qualidade, é só uma forma de sinalizar linha permanente do cardápio.
-
-Os sabores juninos são sazonais por natureza, então seguem outra categoria. Isso não significa receita menor: passam pela mesma cozinha, a mesma massa artesanal e o mesmo cuidado no forno que qualquer outro cookie da casa. Um não é melhor que o outro. São propostas diferentes, uma pensada pra durar o ano todo, a outra pensada pra marcar uma época específica.
-
 ## Como pedir os cookies juninos por delivery em Piraquara
 
 O pedido segue o mesmo caminho dos outros sabores: WhatsApp, clicando em "Pedir no WhatsApp" no site, ou iFood. Como esses sabores têm janela curta, vale confirmar disponibilidade antes de fechar um pedido grande, principalmente se for pra festa junina de escola, empresa ou encontro de família, onde a quantidade costuma ser maior que um pedido individual.
 
 A produção segue em fornada pequena e diária, então quanto antes avisar o que você quer, mais fácil garantir os quatro sabores juntos numa encomenda só. Isso vale tanto pra quem mora perto do centro de Piraquara quanto pra quem está em bairros mais afastados e depende do delivery combinado com antecedência.
 
+Se o plano é presentear alguém com uma caixa mista, vale ler também o nosso [guia de cookies artesanais para presente em Piraquara](../onde-comprar-cookies-artesanais-para-presente-em-piraquara/) — os sabores juninos entram numa caixa combinada do mesmo jeito que os fixos, e dá pra montar um mix pensado pra quem vai receber.
+
 ## Perguntas frequentes
 
 ### Os sabores juninos voltam depois de agosto?
 
 Voltam, mas só na próxima campanha, no ano seguinte. Durante o resto do ano o cardápio fica só com os sabores fixos, sem Milho, Maçã do Amor, Paçoquita ou Pé de Moça.
-
-### Os sabores juninos têm selo dourado?
-
-Não. O selo dourado é exclusivo dos premium fixos do cardápio, como Kinder e Ninho com Nutella™. Os sazonais seguem categoria própria, sem selo.
 
 ### Dá pra pedir os quatro sabores juninos numa encomenda só?
 
@@ -69,6 +61,10 @@ O Paçoquita, pelo lado do amendoim, e o Pé de Moça, pelo doce de leite, são 
 ### O Milho tem gosto de doce de milho de verdade?
 
 Tem esse objetivo: a massa amarela busca o sabor do curau e do milho verde cozido, não uma cobertura artificial só na cor.
+
+### Dá pra combinar sabores juninos com os fixos numa mesma encomenda?
+
+Dá, sim. Muita gente pede uma mistura de junino com Nutella™ ou Chocolatudo na mesma caixa, principalmente quando é pra uma mesa com gostos diferentes — tem gente que vai direto no clássico e tem gente que só espera a época do Milho ou da Paçoquita voltar.
 
 ## Aproveite a janela enquanto ela está aberta
 
