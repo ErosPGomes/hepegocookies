@@ -2,20 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://erospgomes.github.io/hepegocookies/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://erospgomes.github.io/hepegocookies/cardapio.html</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://erospgomes.github.io/hepegocookies/blog/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://erospgomes.github.io/hepegocookies/blog/como-receber-cookies-quentinhos-em-piraquara-guia-delivery/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://erospgomes.github.io/hepegocookies/blog/cookie-de-nutella-vs-cookie-de-kinder-piraquara/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://erospgomes.github.io/hepegocookies/blog/cookies-em-piraquara-sabores-inverno/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://erospgomes.github.io/hepegocookies/blog/onde-comprar-cookies-artesanais-para-presente-em-piraquara/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://erospgomes.github.io/hepegocookies/blog/melhor-massa-de-nutella-piraquara/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

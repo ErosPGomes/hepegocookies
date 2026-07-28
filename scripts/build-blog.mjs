@@ -56,6 +56,14 @@ async function exists(p) {
   try { await access(p); return true; } catch { return false; }
 }
 
+/* capa -> URL absoluta. og:image e o JSON-LD exigem URL completa; concatenar
+   canonical + "../../assets/..." deixa o ".." no meio da URL. Resolve tanto o
+   cover: do front-matter quanto o cover.jpg legado dentro da pasta do post. */
+function coverURL(slug, cover) {
+  if (!cover) return null;
+  return new URL(cover, `${BASE_URL}/blog/${slug}/`).href;
+}
+
 /* Front-matter do publish_md: valores em aspas duplas, array JSON em tags.
    Parser tolerante — se o formato mudar um pouco, não quebra o build. */
 function parseFrontMatter(raw) {
@@ -222,6 +230,7 @@ const ctaBlock = (depth) => `<aside class="blog-cta">
 /* ------------------------------------------------------------ post + lista */
 function postHTML(post) {
   const canonical = `${BASE_URL}/blog/${post.slug}/`;
+  const capaAbs = coverURL(post.slug, post.cover);
   const ld = [
     {
       "@context": "https://schema.org",
@@ -232,7 +241,7 @@ function postHTML(post) {
       datePublished: post.date,
       dateModified: post.date,
       wordCount: post.words,
-      ...(post.cover ? { image: `${canonical}${post.cover}` } : {}),
+      ...(capaAbs ? { image: capaAbs } : {}),
       author: { "@type": "Organization", name: "Hépego Cookies", url: `${BASE_URL}/` },
       publisher: { "@type": "Organization", name: "Hépego Cookies", url: `${BASE_URL}/` },
       mainEntityOfPage: canonical,
@@ -257,7 +266,7 @@ function postHTML(post) {
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
-  ${head({ depth: 2, title: `${post.title} · Hépego Cookies`, description: post.description, canonical, ld, ogImage: post.cover ? `${canonical}${post.cover}` : null })}
+  ${head({ depth: 2, title: `${post.title} · Hépego Cookies`, description: post.description, canonical, ld, ogImage: capaAbs })}
 </head>
 <body>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
@@ -337,9 +346,17 @@ async function main() {
   for (const file of files) {
     const raw = await readFile(join(BLOG_DIR, file), "utf8");
     const { data, body } = parseFrontMatter(raw);
+
+    /* Só é post quem tem front-matter com title. Documentos internos do repo
+       (DNA.md, notas, rascunhos) não têm — e não podem virar página pública. */
+    if (!data.title) {
+      console.warn(`  ! sem front-matter title, ignorando: ${file}`);
+      continue;
+    }
+
     const slug = (data.slug || file.replace(/\.md$/i, "")).trim();
-    if (!/^[a-z0-9][a-z0-9-]*$/i.test(slug)) {
-      console.warn(`  ! slug inválido, ignorando: ${file}`);
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) {
+      console.warn(`  ! slug inválido (use kebab-case minúsculo), ignorando: ${file}`);
       continue;
     }
     const md = stripLeadingH1(body);

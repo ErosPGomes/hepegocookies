@@ -42,22 +42,13 @@ Se você quer tentar essa aventura na sua própria cozinha, aqui está o método
 
 ---
 
-## Qual é a validade do cookie artesanal antes e depois de assar?
+## Por que a gente assa na hora em vez de estocar pronto
 
-A **validade do cookie artesanal** varia de forma drástica dependendo do estágio de conservação e de como ele é armazenado para proteger a umidade da massa. Enquanto a massa crua e congelada mantém suas propriedades por meses, o cookie assado precisa de cuidados simples para não perder a textura macia característica nas primeiras horas após sair do forno.
+A massa fica congelada, porcionada e recheada, esperando o pedido. O cookie só vai ao forno quando alguém pede. É por isso que ele chega na sua casa com o recheio ainda mole e a borda estalando, coisa que um cookie assado de manhã e guardado até a tarde já não faz.
 
-Para ajudar você a organizar sua cozinha ou entender como conservar os cookies que você compra conosco, estruturamos a tabela abaixo com os tempos ideais de conservação:
+Cookie assado tem uma janela curta de auge. Nas primeiras horas depois do forno, a casquinha ainda está crocante e o miolo úmido. Depois disso ele continua gostoso, mas começa a firmar. Como cada sabor tem uma composição diferente de recheio e umidade, esse tempo varia de um para o outro — não existe um número único que sirva para todos, e a gente prefere não chutar um.
 
-### Tabela 1: Guia de Validade e Conservação do Cookie Artesanal
-
-| Estágio do Cookie | Método de Armazenamento | Tempo de Validade | Como Consumir ou Preparar |
-| :--- | :--- | :--- | :--- |
-| **Massa Crua e Porcionada** | Freezer (-18°C) em pote hermético | Até 90 dias | Assar direto do freezer, sem descongelar (ajustar +1 ou 2 minutos de forno) |
-| **Massa Crua e Porcionada** | Geladeira (4°C) em pote fechado | Até 5 dias | Rechear, modelar e congelar antes de assar |
-| **Cookie Assado** | Temperatura ambiente (pote bem vedado) | Até 7 dias | Consumir direto ou aquecer por 15 segundos no micro-ondas para recuperar o recheio derretido |
-| **Cookie Assado** | Geladeira | Não recomendado | A geladeira acelera a retrogradação do amido, deixando a massa seca e o recheio duro |
-
-Como mostra a tabela, o freezer é o melhor amigo de quem trabalha com cookies artesanais. Ele preserva os sabores dos ingredientes sem a necessidade de conservantes químicos, mantendo a integridade da gordura da manteiga e a umidade necessária para o momento do forneamento.
+Por isso o nosso conselho é simples: peça e coma fresco. Se sobrar, guarde em pote bem fechado, longe do calor, e aqueça alguns segundos antes de comer para o recheio voltar a derreter. Se quiser saber sobre um sabor específico, é só perguntar pelo WhatsApp na hora do pedido.
 
 ---
 
@@ -113,11 +104,11 @@ Segundo dados de comportamento do consumidor divulgados em análises do Google (
 
 ## Perguntas frequentes
 
-### Quanto tempo dura o cookie da Hépego depois de assado?
-Após assado, nosso cookie artesanal mantém a textura ideal por até 7 dias se guardado em temperatura ambiente dentro de um pote bem fechado ou na própria embalagem de entrega. Não recomendamos guardar na geladeira, pois o frio resseca a massa e endurece os recheios cremosos.
+### Como guardar o cookie da Hépego se eu não comer na hora?
+Guarde em pote bem fechado ou na própria embalagem da entrega, longe do calor e da umidade, e aqueça alguns segundos antes de comer para o recheio voltar a derreter. O tempo de auge varia de sabor para sabor, então a gente não trabalha com um prazo fixo — se for para um sabor específico, pergunte pelo WhatsApp na hora do pedido.
 
 ### Posso congelar os cookies que comprei prontos?
-Sim, você pode congelar os cookies já assados por até 30 dias bem embalados em plástico filme. Quando quiser consumir, basta deixá-los descongelar em temperatura ambiente por cerca de 30 minutos e aquecer no forno elétrico ou micro-ondas por alguns segundos para recuperar a cremosidade do recheio.
+Dá para congelar bem embalados em plástico filme, mas a gente prefere não cravar um prazo: cada recheio se comporta de um jeito no congelador. Para consumir, deixe descongelar em temperatura ambiente e aqueça alguns segundos no forno elétrico ou micro-ondas para a cremosidade voltar. Se quiser guardar por bastante tempo, fale com a gente pelo WhatsApp antes.
 
 ### O cookie de Kinder de vocês leva creme de avelã?
 Não, o nosso cookie de Kinder não leva creme de avelã em sua composição. Nós respeitamos rigorosamente a identidade de cada sabor: o recheio do nosso cookie Kinder é composto exclusivamente por uma combinação nobre de chocolate ao leite e chocolate branco.

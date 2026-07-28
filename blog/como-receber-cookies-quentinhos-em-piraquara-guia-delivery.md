@@ -86,7 +86,7 @@ Sim, nós desenvolvemos uma embalagem protetora individual para cada unidade, qu
 O nosso cookie de sabor Kinder é recheado exclusivamente com chocolate ao leite e chocolate branco nobre de alta qualidade. Diferente de outras receitas do mercado, ele não leva creme de avelã em sua composição, destacando o sabor clássico e suave dos dois chocolates combinados.
 
 ### Como devo armazenar os cookies se não comer tudo no mesmo dia?
-Os cookies artesanais da Hépego podem ser mantidos em um recipiente bem fechado (pote hermético ou na própria embalagem individual selada) em temperatura ambiente por até 3 dias. Quando quiser consumir, basta seguir o nosso passo a passo de aquecimento rápido para recuperar a textura de forno.
+Mantenha em recipiente bem fechado (pote hermético ou na própria embalagem individual selada), em temperatura ambiente e longe do calor. Quando quiser consumir, siga o nosso passo a passo de aquecimento rápido para recuperar a textura de forno. Cada sabor tem um recheio diferente e se mantém no auge por um tempo diferente, então o ideal é comer fresco — para um sabor específico, pergunte pelo WhatsApp.
 
 ## Saboreie o verdadeiro cookie artesanal sem sair de casa
 

@@ -114,8 +114,8 @@ Os sabores mais vendidos e recomendados para presentes são o Ninho com Nutella�
 ### O cookie Kinder leva creme de avelã?
 Não, o nosso cookie Kinder não leva creme de avelã em sua composição. O recheio é composto exclusivamente por uma combinação generosa de chocolate ao leite e chocolate branco de alta qualidade, garantindo a textura clássica e o sabor característico do chocolate sem misturas externas.
 
-### Como conservar os cookies artesanais para que durem mais?
-Para conservar os cookies fresquinhos, mantenha-os em um recipiente hermeticamente fechado, longe do calor e da umidade, por até 3 dias em temperatura ambiente. Se preferir guardar por mais tempo, você pode congelar os cookies bem embalados por até 30 dias e aquecê-los diretamente no forno antes de consumir.
+### Como guardar os cookies artesanais se eu não comer na hora?
+Mantenha em recipiente bem fechado, longe do calor e da umidade, e aqueça alguns segundos antes de comer para o recheio voltar ao ponto. Como cada sabor tem um recheio diferente, o tempo em que ele se mantém no auge varia de um para outro — o ideal é comer fresco. Qualquer dúvida sobre um sabor específico a gente responde pelo WhatsApp.
 
 ---
 

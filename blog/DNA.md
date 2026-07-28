@@ -53,11 +53,68 @@ pro texto — um erro aqui é pior que um post mediano:
   são sazonais, NÃO premium — nunca atribua selo dourado a eles.**
 - **Acentos corretos, sempre**: Maçã do Amor (cedilha no ç + til no ã — os dois),
   Paçoquita, Pé de Moça, Torta de Limão, Hépego (é).
+- **NUNCA invente sabor.** Só existem os sabores da lista canônica abaixo. Se um
+  sabor não está nessa lista, ele NÃO EXISTE — não escreva sobre ele, não cite de
+  passagem, não use em comparativo, nem que "faça sentido" para o texto. A fonte
+  de verdade é `js/flow.js` (array `HEPEGO_MENU`), de onde o cardápio do site é
+  montado. Em caso de qualquer divergência entre este arquivo e `js/flow.js`,
+  vale o `js/flow.js`.
+- **Nunca invente estrutura física ou operacional**: a cozinha/loja fica em
+  **Piraquara**, não em Curitiba. Não afirme que existe loja em Curitiba, filial,
+  quiosque ou ponto de venda que não esteja documentado aqui.
 - **Preços** (confirme antes de citar em qualquer post — mudam com frequência;
   se não tiver certeza do valor atual, não cite número, fale em termos gerais):
   Tradicional R$6, Kinder R$15, premium R$12, sazonais/juninos R$12, Biscoito
   de Farinha Láctea R$12. **Atualize esta lista sempre que o preço mudar.**
+- **NUNCA cite validade, prazo de consumo ou tempo de conservação.** Não escreva
+  "dura X dias", "até X dias na geladeira", "congele por X dias", nem tabela de
+  conservação. A validade varia de cookie para cookie e não está documentada em
+  lugar nenhum — qualquer número aqui é invenção, e é afirmação sobre segurança
+  de alimento. Se o assunto surgir, oriente a consumir fresco e a falar com a
+  gente pelo WhatsApp. Vale também para posts sobre "como armazenar".
 - Nunca invente depoimento, avaliação ou número de vendas que não existam.
+
+## Lista canônica de sabores (fonte: `js/flow.js` → `HEPEGO_MENU`)
+
+**Nenhum sabor fora desta lista pode aparecer em qualquer post.** Antes de
+publicar, confira cada sabor citado no texto contra esta tabela.
+
+| Sabor | Preço | Selo dourado? | Situação |
+| :--- | :--- | :--- | :--- |
+| Biscoito de Farinha Láctea | R$12 | não | fixo |
+| Tradicional | R$6 | não | fixo |
+| Nutella™ | R$12 | não | fixo |
+| Chocolatudo | R$12 | não | fixo |
+| Kinder | R$15 | **sim** | fixo |
+| Ninho + Frutas Vermelhas | R$12 | não | fixo |
+| Triplo Chocolate | R$12 | não | fixo |
+| Ninho + Nutella™ | R$12 | **sim** | fixo |
+| Red Velvet | R$12 | não | fixo |
+| Mirtilo (Blue Velvet) | R$12 | não | fixo |
+| Cappuccino | R$12 | não | fixo |
+| Floresta Negra | R$12 | **sim** | fixo |
+| Torta de Limão | R$12 | não | fixo |
+| Bicho de Pé | R$12 | não | fixo |
+| Merengue de Morango | R$12 | não | fixo |
+| Oreo | R$12 | **sim** | fixo |
+| Milho | R$12 | não | **sazonal junino** |
+| Maçã do Amor | R$12 | não | **sazonal junino** |
+| Paçoquita | R$12 | não | **sazonal junino** |
+| Pé de Moça | R$12 | não | **sazonal junino** |
+
+### Janela dos sazonais juninos
+
+Os quatro sabores juninos (Milho, Maçã do Amor, Paçoquita, Pé de Moça) só ficam
+no cardápio na **campanha de junho a agosto** — depois saem. Regra para o blog:
+
+- **De junho a agosto**: pode escrever sobre eles livremente.
+- **Fora dessa janela**: não escreva post cujo tema central seja sabor junino, e
+  não os cite como se estivessem disponíveis. Se precisar mencioná-los, deixe
+  claro que voltam na campanha de junho.
+- Sazonal **nunca** tem selo dourado, mesmo dentro da janela.
+
+Quando um sabor novo for lançado ou removido, atualize `js/flow.js` **e** esta
+tabela juntos.
 
 ## Palavras-chave e SEO local
 
@@ -76,16 +133,33 @@ Antes de escolher o tema, leia os arquivos `.md` já existentes em `/blog/` (tí
 e slug) — nunca repita um ângulo já coberto. Pilares, com exemplos já publicados:
 
 1. **Comparativo de sabores** — "X vs Y: qual pedir" (já feito: Nutella™ vs
-   Kinder, Chocolatudo vs Doce de Leite com Flor de Sal).
+   Kinder). Só compare sabores da lista canônica acima.
 2. **Guia de compra/presente/delivery** — como pedir, onde comprar, presentear
    (já feito: guia de delivery, presente em Piraquara).
 3. **Sazonalidade/clima** — sabores por estação, harmonização com bebidas
    quentes/frias (já feito: sabores de inverno, bebidas quentes).
 4. **Bastidores/qualidade** — processo artesanal, ingredientes, o que diferencia
    do industrial (já feito: massa de Nutella™ assada na hora).
-5. **Ocasiões e datas** — aniversário, visita, café da tarde, datas comemorativas
-   (verificar `hepego-commemorative-dates.md` nas memórias do projeto, se
-   acessível; senão, focar em ocasiões genéricas do dia a dia).
+5. **Ocasiões e datas** — aniversário, visita, café da tarde, datas comemorativas.
+   Calendário de referência (hemisfério sul, use o mês corrente para decidir):
+
+   | Mês | Gancho |
+   | :--- | :--- |
+   | Janeiro | Volta às aulas, férias, calor |
+   | Fevereiro | Carnaval (data móvel) |
+   | Março | Dia da Mulher (8), início do outono |
+   | Abril | Páscoa (data móvel, pode cair em março) |
+   | Maio | Dia das Mães (2º domingo) |
+   | Junho | Festas juninas, Dia dos Namorados (12), início do inverno |
+   | Julho | Férias escolares, auge do frio |
+   | Agosto | Dia dos Pais (2º domingo), fim da campanha junina |
+   | Setembro | Início da primavera (23) |
+   | Outubro | Dia das Crianças (12), Dia do Professor (15) |
+   | Novembro | Black Friday (última sexta) |
+   | Dezembro | Natal, confraternizações, presentes de fim de ano |
+
+   Não invente "dia nacional do cookie" nem data comemorativa que você não tenha
+   certeza que existe. Na dúvida, use ocasião genérica do dia a dia.
 
 Distribua entre os pilares — não escreva dois posts seguidos do mesmo pilar.
 
