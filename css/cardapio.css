@@ -242,6 +242,11 @@
 .orderbar-info { display: flex; flex-direction: column; line-height: 1.2; }
 .orderbar-count { font-size: 12.5px; color: oklch(80% 0.03 82); letter-spacing: .02em; }
 .orderbar-total { font-weight: 700; font-size: 1.25rem; }
+.orderbar-minimum {
+  font-size: 11.5px;
+  color: oklch(84% 0.04 82);
+}
+.orderbar-minimum.is-ready { color: oklch(88% 0.08 145); }
 
 /* ============================================================
    Sheet (dialog modal)
@@ -315,6 +320,13 @@ body.sheet-on .sheet { transform: translateY(0); }
 }
 .sheet-subtotal > span:first-child { color: var(--brown); }
 .sheet-subtotal .serif { font-weight: 700; font-size: 1.4rem; }
+.sheet-minimum {
+  margin: 0 0 10px;
+  color: var(--gold-text);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+.sheet-minimum.is-ready { color: var(--brown); }
 .sheet-note {
   font-size: 13px;
   color: var(--muted);

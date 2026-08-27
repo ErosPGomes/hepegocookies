@@ -11,6 +11,7 @@
     : window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var STORE_KEY = "hepego_cart_v1";
+  var MIN_ORDER = 20;
   var byId = {};
   MENU.forEach(function (i) { byId[i.id] = i; });
 
@@ -29,6 +30,7 @@
   }
   function totalQty() { var t = 0; for (var k in cart) t += cart[k]; return t; }
   function totalPrice() { var t = 0; for (var k in cart) t += cart[k] * byId[k].price; return t; }
+  function meetsMinimum() { return totalPrice() >= MIN_ORDER; }
 
   /* ---------- persistência ---------- */
   function save() { try { sessionStorage.setItem(STORE_KEY, JSON.stringify(cart)); } catch (e) {} }
@@ -189,6 +191,11 @@
         bar.hidden = false;
         $("[data-bar-count]").textContent = q + (q === 1 ? " item" : " itens");
         $("[data-bar-total]").textContent = money(price);
+        var barMinimum = $("[data-bar-minimum]");
+        if (barMinimum) {
+          barMinimum.textContent = meetsMinimum() ? "Pedido mínimo atingido" : "Faltam " + money(MIN_ORDER - price);
+          barMinimum.classList.toggle("is-ready", meetsMinimum());
+        }
       } else { bar.hidden = true; }
     }
     var hcta = $(".header-cta[data-cart-open]");
@@ -254,9 +261,26 @@
       }
     }
     var tot = $("[data-sheet-total]");
-    if (tot) tot.textContent = money(totalPrice());
+    var price = totalPrice();
+    if (tot) tot.textContent = money(price);
+    var minimum = $("[data-sheet-minimum]");
+    if (minimum) {
+      if (price === 0) {
+        minimum.textContent = "Pedido mínimo de " + money(MIN_ORDER) + ".";
+        minimum.classList.remove("is-ready");
+      } else if (!meetsMinimum()) {
+        minimum.textContent = "Faltam " + money(MIN_ORDER - price) + " para atingir o pedido mínimo de " + money(MIN_ORDER) + ".";
+        minimum.classList.remove("is-ready");
+      } else {
+        minimum.textContent = "Pedido mínimo atingido.";
+        minimum.classList.add("is-ready");
+      }
+    }
     var send = $("[data-sheet-send]");
-    if (send) send.disabled = totalQty() === 0;
+    if (send) {
+      send.disabled = totalQty() === 0 || !meetsMinimum();
+      send.setAttribute("aria-disabled", send.disabled ? "true" : "false");
+    }
   }
   function focusablesIn(root) {
     return $$('button:not([disabled]), [href], input, textarea, [tabindex]:not([tabindex="-1"])', root)
@@ -343,7 +367,10 @@
     return lines.join("\n");
   }
   function sendOrder(btn) {
-    if (totalQty() === 0) return;
+    if (totalQty() === 0 || !meetsMinimum()) {
+      renderSheet();
+      return;
+    }
     var pay = "Pix";
     var chosen = $$('input[name="pay"]').filter(function (r) { return r.checked; })[0];
     if (chosen) pay = chosen.value;
