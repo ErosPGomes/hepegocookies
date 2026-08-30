@@ -19,6 +19,9 @@
   var funnelStarted = false;
   var sheetOpen = false, lastFocus = null;
   var currentFilter = "todos";
+  var cardFlowSelected = false;
+  var reopenSheetAfterConsent = false;
+  var checkoutBusy = false;
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -277,9 +280,25 @@
       }
     }
     var send = $("[data-sheet-send]");
+    var whatsapp = $("[data-sheet-whatsapp]");
+    var cardSwitch = $("[data-sheet-card]");
+    var micro = $("[data-sheet-micro]");
     if (send) {
-      send.disabled = totalQty() === 0 || !meetsMinimum();
+      send.hidden = !cardFlowSelected;
+      send.disabled = totalQty() === 0 || !meetsMinimum() || checkoutBusy;
       send.setAttribute("aria-disabled", send.disabled ? "true" : "false");
+    }
+    if (whatsapp) {
+      whatsapp.hidden = false;
+      whatsapp.className = cardFlowSelected ? "sheet-switch" : "btn btn--wa btn--lg";
+      whatsapp.textContent = cardFlowSelected ? "Prefiro finalizar direto no WhatsApp" : "Finalizar pedido no WhatsApp";
+      whatsapp.disabled = totalQty() === 0 || !meetsMinimum() || checkoutBusy;
+    }
+    if (cardSwitch) cardSwitch.hidden = cardFlowSelected;
+    if (micro) {
+      micro.textContent = cardFlowSelected
+        ? "Produtos pagos pela InfinitePay. Frete combinado depois e pago via Pix."
+        : "O valor do frete será combinado no WhatsApp.";
     }
   }
   function focusablesIn(root) {
@@ -344,7 +363,91 @@
     }
   }
 
-  /* ---------- WhatsApp ---------- */
+  /* ---------- entrega + checkout ---------- */
+  function fieldValue(id) { return (($(id) && $(id).value) || "").trim(); }
+  function deliveryFormData() {
+    return {
+      dropoff_name: fieldValue("#f-nome"),
+      dropoff_phone: fieldValue("#f-phone"),
+      dropoff_address: {
+        cep: fieldValue("#f-cep"),
+        street: fieldValue("#f-street"),
+        number: fieldValue("#f-number"),
+        complement: fieldValue("#f-complement"),
+        neighborhood: fieldValue("#f-neighborhood"),
+        city: fieldValue("#f-city"),
+        state: fieldValue("#f-state").toUpperCase()
+      }
+    };
+  }
+  function setCheckoutStatus(message, isError) {
+    var status = $("[data-checkout-status]");
+    if (!status) return;
+    status.textContent = message || "";
+    status.classList.toggle("is-error", !!isError);
+  }
+  function validateDeliveryForm() {
+    var ids = ["#f-nome", "#f-phone", "#f-cep", "#f-street", "#f-number", "#f-neighborhood", "#f-city", "#f-state", "#f-email"];
+    for (var i = 0; i < ids.length; i++) {
+      var input = $(ids[i]);
+      if (input && !input.checkValidity()) { input.reportValidity(); input.focus(); return false; }
+    }
+    if (fieldValue("#f-cep").replace(/\D/g, "").length !== 8) {
+      setCheckoutStatus("Informe um CEP com 8 números.", true); $("#f-cep").focus(); return false;
+    }
+    if (fieldValue("#f-state").length !== 2) {
+      setCheckoutStatus("Informe a UF com 2 letras.", true); $("#f-state").focus(); return false;
+    }
+    return true;
+  }
+  async function apiPost(path, body) {
+    var response = await fetch(path, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    var data = {};
+    try { data = await response.json(); } catch (e) {}
+    if (!response.ok) throw new Error(data.error || "Não foi possível concluir. Tente novamente.");
+    return data;
+  }
+  function checkoutItems() {
+    return MENU.filter(function (item) { return (cart[item.id] || 0) > 0; }).map(function (item) {
+      return { id: item.id, description: item.name, quantity: cart[item.id], price: Math.round(item.price * 100) };
+    });
+  }
+  function newOrderNsu() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") return "hep_" + window.crypto.randomUUID().replace(/-/g, "");
+    return "hep_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 14);
+  }
+  async function sendOrder(btn) {
+    if (!meetsMinimum() || !validateDeliveryForm() || checkoutBusy) { renderSheet(); return; }
+    if (!cardFlowSelected) { openCardConsent(true); return; }
+    checkoutBusy = true;
+    setCheckoutStatus("Preparando o pagamento seguro…", false);
+    if (btn) { btn.disabled = true; btn.classList.add("is-loading"); }
+    try {
+      var form = deliveryFormData();
+      var result = await apiPost("/api/checkout", {
+        order_nsu: newOrderNsu(),
+        checkout_mode: "card_whatsapp_freight",
+        freight_terms_accepted: true,
+        items: checkoutItems(),
+        customer: { name: form.dropoff_name, phone_number: form.dropoff_phone, email: fieldValue("#f-email") },
+        dropoff_address: form.dropoff_address,
+        notes: fieldValue("#f-obs")
+      });
+      track("funnel_complete", { items_count: totalQty(), cart_total: totalPrice(), payment: "InfinitePay", shipping_fee: 0 });
+      window.location.href = result.url;
+    } catch (error) {
+      setCheckoutStatus(error.message, true);
+      checkoutBusy = false;
+      if (btn) { btn.disabled = false; btn.classList.remove("is-loading"); }
+      renderSheet();
+    }
+  }
+
+  /* ---------- alternativa WhatsApp ---------- */
   function buildOrderMessage() {
     var lines = ["*Pedido Hépego* 🍪", ""];
     MENU.forEach(function (item) {
@@ -354,33 +457,71 @@
     });
     lines.push("");
     lines.push("*Subtotal:* " + money(totalPrice()));
-    var pay = "Pix";
-    var chosen = $$('input[name="pay"]').filter(function (r) { return r.checked; })[0];
-    if (chosen) pay = chosen.value;
-    lines.push("*Pagamento:* " + pay);
-    var nome = (($("#f-nome") && $("#f-nome").value) || "").trim();
+    var nome = fieldValue("#f-nome");
     if (nome) lines.push("*Cliente:* " + nome);
-    var obs = (($("#f-obs") && $("#f-obs").value) || "").trim();
+    var phone = fieldValue("#f-phone");
+    if (phone) lines.push("*Telefone:* " + phone);
+    var address = deliveryFormData().dropoff_address;
+    if (address.street) {
+      lines.push("*Entrega:* " + address.street + ", " + address.number +
+        (address.complement ? " · " + address.complement : "") + " · " + address.neighborhood +
+        " · " + address.city + "/" + address.state + " · CEP " + address.cep);
+    }
+    var obs = fieldValue("#f-obs");
     if (obs) lines.push("*Obs:* " + obs);
     lines.push("");
-    lines.push("_(Frete a combinar)_");
+    lines.push("*Frete:* a combinar pelo WhatsApp");
     return lines.join("\n");
   }
-  function sendOrder(btn) {
-    if (totalQty() === 0 || !meetsMinimum()) {
-      renderSheet();
-      return;
-    }
-    var pay = "Pix";
-    var chosen = $$('input[name="pay"]').filter(function (r) { return r.checked; })[0];
-    if (chosen) pay = chosen.value;
-    track("funnel_complete", { items_count: totalQty(), cart_total: totalPrice(), payment: pay });
+  function sendWhatsApp(btn) {
+    if (totalQty() === 0 || !meetsMinimum() || !validateDeliveryForm()) { renderSheet(); return; }
+    track("funnel_complete", { items_count: totalQty(), cart_total: totalPrice(), payment: "WhatsApp" });
     var url = "https://wa.me/" + waNumber() + "?text=" + encodeURIComponent(buildOrderMessage());
     if (btn) {
       btn.disabled = true; btn.classList.add("is-loading");
       window.setTimeout(function () { btn.disabled = false; btn.classList.remove("is-loading"); }, 2000);
     }
     window.open(url, "_blank", "noopener");
+  }
+
+  /* ---------- consentimento cartão + frete separado ---------- */
+  function syncCardBanner() {
+    var button = $("[data-card-flow-start]");
+    if (!button) return;
+    button.textContent = cardFlowSelected ? "Cartão selecionado" : "Quero pagar com cartão";
+    button.setAttribute("aria-pressed", cardFlowSelected ? "true" : "false");
+  }
+  function openCardConsent(fromSheet) {
+    var dialog = $("[data-card-consent]");
+    if (!dialog) return;
+    reopenSheetAfterConsent = !!fromSheet || totalQty() > 0;
+    var show = function () {
+      var check = $("[data-card-consent-check]");
+      var proceed = $("[data-card-consent-continue]");
+      if (check) check.checked = false;
+      if (proceed) proceed.disabled = true;
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+      if (check) check.focus();
+      track("card_terms_view", { cart_total: totalPrice() });
+    };
+    if (sheetOpen) { closeSheet(); window.setTimeout(show, 320); }
+    else show();
+  }
+  function acceptCardConsent() {
+    var dialog = $("[data-card-consent]");
+    var check = $("[data-card-consent-check]");
+    if (!dialog || !check || !check.checked) return;
+    cardFlowSelected = true;
+    syncCardBanner();
+    track("card_terms_accept", { cart_total: totalPrice() });
+    if (typeof dialog.close === "function") dialog.close("accepted");
+    else dialog.removeAttribute("open");
+    if (reopenSheetAfterConsent && totalQty() > 0) window.setTimeout(openSheet, 80);
+    else {
+      var grid = $("[data-menu-grid]");
+      if (grid) grid.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }
   }
 
   /* ---------- snackbar ---------- */
@@ -420,7 +561,11 @@
     if (e.target.closest("[data-cart-open]")) { openSheet(); return; }
     if (e.target.closest("[data-sheet-close]")) { closeSheet(); return; }
     if (e.target.closest("[data-backdrop]")) { closeSheet(); return; }
+    if (e.target.closest("[data-card-flow-start]")) { openCardConsent(false); return; }
+    if (e.target.closest("[data-sheet-card]")) { openCardConsent(true); return; }
+    if (e.target.closest("[data-card-consent-continue]")) { acceptCardConsent(); return; }
     if (e.target.closest("[data-sheet-send]")) { sendOrder(e.target.closest("[data-sheet-send]")); return; }
+    if (e.target.closest("[data-sheet-whatsapp]")) { sendWhatsApp(e.target.closest("[data-sheet-whatsapp]")); return; }
     if (e.target.closest("[data-snack-reset]")) { resetCart(); return; }
     var chip = e.target.closest("[data-filter]");
     if (chip) { applyFilter(chip.getAttribute("data-filter")); return; }
@@ -493,8 +638,22 @@
     renderMenu();
     applyFilter("todos", { instant: true, silent: true });
     initChipsKeyboard();
+    syncCardBanner();
 
     document.addEventListener("click", onClick);
+    document.addEventListener("input", function (e) {
+      if (e.target.matches("[data-card-consent-check]")) {
+        var proceed = $("[data-card-consent-continue]");
+        if (proceed) proceed.disabled = !e.target.checked;
+      }
+    });
+    var consent = $("[data-card-consent]");
+    if (consent) consent.addEventListener("close", function () {
+      if (consent.returnValue !== "accepted" && reopenSheetAfterConsent && totalQty() > 0) {
+        window.setTimeout(openSheet, 80);
+      }
+      reopenSheetAfterConsent = false;
+    });
 
     var hadCart = load();
     if (hadCart) {

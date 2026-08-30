@@ -1,0 +1,13 @@
+# Copie para .dev.vars apenas no desenvolvimento local. Nunca faça commit de .dev.vars.
+INFINITEPAY_HANDLE="hepego-cookies"
+UBER_CLIENT_ID=""
+UBER_CLIENT_SECRET=""
+UBER_CUSTOMER_ID=""
+UBER_WEBHOOK_SIGNING_KEY=""
+SITE_ORIGIN="http://localhost:8080"
+PICKUP_PHONE_NUMBER="+5541987172296"
+PICKUP_ADDRESS='{"street_address":["Rua e número","Complemento"],"city":"Piraquara","state":"PR","zip_code":"00000000","country":"BR"}'
+PICKUP_LATITUDE="-25.4548376"
+PICKUP_LONGITUDE="-49.0493385"
+ADMIN_API_KEY=""
+ENVIRONMENT="development"

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cardápio · Hépego · monte seu pedido e peça pelo WhatsApp</title>
-  <meta name="description" content="20 sabores de cookies artesanais da Hépego, de R$ 6 a R$ 15. Toque para adicionar; o pedido abre pronto no WhatsApp.">
+  <title>Cardápio · Hépego · monte seu pedido online</title>
+  <meta name="description" content="20 sabores de cookies artesanais da Hépego, de R$ 6 a R$ 15. Finalize pelo WhatsApp ou pague os produtos com cartão.">
 
   <link rel="icon" href="assets/img/brand/favicon.png">
 
@@ -85,7 +85,26 @@
       <div class="container">
         <a class="breadcrumb" href="index.html">← Voltar ao site</a>
         <h1 class="serif" id="cardapio-h">O cardápio <em>completo</em>.</h1>
-        <p class="cardapio-hero-sub">20 sabores, de R$ 6 a R$ 15. Toque para adicionar; o pedido abre pronto no WhatsApp.</p>
+        <p class="cardapio-hero-sub">20 sabores, de R$ 6 a R$ 15. Monte o pedido e finalize pelo WhatsApp ou pague os produtos com cartão.</p>
+      </div>
+    </section>
+
+    <section class="card-payment" aria-labelledby="card-payment-title">
+      <div class="container">
+        <div class="card-payment-inner">
+          <div class="card-payment-copy">
+            <span class="card-payment-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M6.5 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <div>
+              <p class="eyebrow">Pagamento flexível</p>
+              <h2 class="serif" id="card-payment-title">Pague ou parcele com cartão de crédito</h2>
+              <p>Os produtos são pagos online. O frete é combinado depois pelo WhatsApp e pago separadamente via Pix.</p>
+              <small>Consulte taxas de parcelamento.</small>
+            </div>
+          </div>
+          <button class="btn btn--solid btn--lg" type="button" data-card-flow-start>Quero pagar com cartão</button>
+        </div>
       </div>
     </section>
 
@@ -176,31 +195,91 @@
         <span class="serif" data-sheet-total>R$ 0,00</span>
       </div>
       <p class="sheet-minimum" data-sheet-minimum role="status" aria-live="polite"></p>
-      <p class="sheet-note">A entrega é cobrada à parte: o frete é combinado no WhatsApp.</p>
 
-      <fieldset class="sheet-field">
-        <legend>Pagamento</legend>
-        <div class="pay-options">
-          <label class="pay-opt"><input type="radio" name="pay" value="Pix" checked><span>Pix</span></label>
-          <label class="pay-opt"><input type="radio" name="pay" value="Dinheiro"><span>Dinheiro</span></label>
-          <label class="pay-opt"><input type="radio" name="pay" value="Cartão"><span>Cartão</span></label>
+      <div class="sheet-field">
+        <label class="sheet-label" for="f-nome">Nome</label>
+        <input class="sheet-input" id="f-nome" type="text" autocomplete="name" maxlength="100" placeholder="Como te chamamos?" required>
+      </div>
+      <div class="sheet-field sheet-grid-2">
+        <div>
+          <label class="sheet-label" for="f-phone">WhatsApp</label>
+          <input class="sheet-input" id="f-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(41) 99999-9999" required>
+        </div>
+        <div>
+          <label class="sheet-label" for="f-email">E-mail (opcional)</label>
+          <input class="sheet-input" id="f-email" type="email" autocomplete="email" maxlength="160" placeholder="voce@email.com">
+        </div>
+      </div>
+
+      <fieldset class="sheet-field address-field">
+        <legend>Endereço de entrega</legend>
+        <div class="address-grid">
+          <div class="field-cep">
+            <label class="sheet-label" for="f-cep">CEP</label>
+            <input class="sheet-input" id="f-cep" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="9" placeholder="83300-000" required>
+          </div>
+          <div class="field-street">
+            <label class="sheet-label" for="f-street">Rua</label>
+            <input class="sheet-input" id="f-street" type="text" autocomplete="address-line1" maxlength="120" required>
+          </div>
+          <div class="field-number">
+            <label class="sheet-label" for="f-number">Número</label>
+            <input class="sheet-input" id="f-number" type="text" autocomplete="address-line2" maxlength="20" required>
+          </div>
+          <div class="field-complement">
+            <label class="sheet-label" for="f-complement">Complemento</label>
+            <input class="sheet-input" id="f-complement" type="text" maxlength="80" placeholder="Apto, bloco…">
+          </div>
+          <div class="field-neighborhood">
+            <label class="sheet-label" for="f-neighborhood">Bairro</label>
+            <input class="sheet-input" id="f-neighborhood" type="text" autocomplete="address-level3" maxlength="80" required>
+          </div>
+          <div class="field-city">
+            <label class="sheet-label" for="f-city">Cidade</label>
+            <input class="sheet-input" id="f-city" type="text" autocomplete="address-level2" maxlength="80" value="Piraquara" required>
+          </div>
+          <div class="field-state">
+            <label class="sheet-label" for="f-state">UF</label>
+            <input class="sheet-input" id="f-state" type="text" autocomplete="address-level1" maxlength="2" value="PR" required>
+          </div>
         </div>
       </fieldset>
 
       <div class="sheet-field">
-        <label class="sheet-label" for="f-nome">Nome (opcional)</label>
-        <input class="sheet-input" id="f-nome" type="text" autocomplete="name" placeholder="Como te chamamos?">
-      </div>
-      <div class="sheet-field">
         <label class="sheet-label" for="f-obs">Observações (opcional)</label>
-        <textarea class="sheet-input" id="f-obs" rows="2" placeholder="Algum detalhe do pedido?"></textarea>
+        <textarea class="sheet-input" id="f-obs" rows="2" maxlength="500" placeholder="Referência ou instrução para entrega"></textarea>
       </div>
+      <p class="checkout-status" data-checkout-status role="status" aria-live="polite"></p>
     </div>
     <div class="sheet-foot">
-      <button class="btn btn--wa btn--lg" type="button" data-sheet-send>Enviar pedido no WhatsApp</button>
-      <p class="sheet-micro">Você revisa tudo no WhatsApp antes de confirmar. Nada é cobrado agora.</p>
+      <button class="btn btn--solid btn--lg" type="button" data-sheet-send hidden>Pagar produtos com cartão</button>
+      <button class="btn btn--wa btn--lg" type="button" data-sheet-whatsapp>Finalizar pedido no WhatsApp</button>
+      <button class="sheet-switch" type="button" data-sheet-card>Quero pagar ou parcelar os produtos no cartão</button>
+      <p class="sheet-micro" data-sheet-micro>O valor do frete será combinado no WhatsApp.</p>
     </div>
   </aside>
+
+  <dialog class="card-consent" data-card-consent aria-labelledby="card-consent-title">
+    <form class="card-consent-panel" method="dialog">
+      <button class="card-consent-close" type="submit" value="cancel" aria-label="Fechar aviso">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <span class="card-consent-mark" aria-hidden="true">R$</span>
+      <p class="eyebrow">Antes de pagar</p>
+      <h2 class="serif" id="card-consent-title">O cartão paga somente os produtos.</h2>
+      <p>Depois da confirmação, abriremos o WhatsApp com seu número de pedido, nome e produtos. Por lá calculamos o frete, que será pago separadamente via Pix.</p>
+      <div class="card-consent-summary" aria-label="Resumo das condições">
+        <span>Produtos</span><strong>Cartão de crédito</strong>
+        <span>Frete</span><strong>Pix pelo WhatsApp</strong>
+      </div>
+      <label class="card-consent-check">
+        <input type="checkbox" data-card-consent-check>
+        <span>Li e entendi que o frete não está incluído no pagamento com cartão.</span>
+      </label>
+      <button class="btn btn--solid btn--lg" type="button" data-card-consent-continue disabled>Entendi, continuar</button>
+      <p class="card-consent-legal">O parcelamento e eventuais taxas são apresentados pela InfinitePay antes da confirmação.</p>
+    </form>
+  </dialog>
 
   <!-- Snackbar -->
   <div class="snack" data-snack role="status" hidden>

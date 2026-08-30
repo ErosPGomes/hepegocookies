@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hepego-checkout",
+  "main": "worker/src/index.js",
+  "compatibility_date": "2026-08-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": true,
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hepego-orders",
+      "database_id": "dad56f44-5f3f-4111-b574-3444d5323753",
+      "migrations_dir": "worker/migrations"
+    }
+  ],
+
+  "routes": [
+    {
+      "pattern": "hepego.com.br/api/*",
+      "zone_name": "hepego.com.br"
+    }
+  ],
+  "vars": {
+    "MAX_FEE_INCREASE_CENTS": "300",
+    "ENVIRONMENT": "production",
+    "PICKUP_LATITUDE": "-25.4548376",
+    "PICKUP_LONGITUDE": "-49.0493385"
+  },
+
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
+  }
+}

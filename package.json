@@ -1,0 +1,16 @@
+{
+  "name": "hepego-checkout",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:worker": "wrangler dev",
+    "deploy:worker": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply hepego-orders --local",
+    "db:migrate:remote": "wrangler d1 migrations apply hepego-orders --remote",
+    "test": "node --test worker/test/*.test.js",
+    "check": "node --check worker/src/index.js && node --check js/cardapio.js && node --check js/obrigado.js && npm test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.33.1"
+  }
+}

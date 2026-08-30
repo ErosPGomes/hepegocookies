@@ -1,0 +1,55 @@
+.thanks-page {
+  min-height: 100dvh;
+  background: radial-gradient(circle at 50% 0%, oklch(84% 0.09 85 / .3), transparent 38%), var(--cream);
+  color: var(--espresso);
+}
+.thanks-shell {
+  width: min(100% - 32px, 620px);
+  min-height: 100dvh;
+  margin-inline: auto;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 24px;
+  padding-block: 32px;
+}
+.thanks-logo img { width: 150px; height: auto; }
+.thanks-card {
+  width: 100%;
+  padding: clamp(28px, 7vw, 52px);
+  border-radius: 24px;
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.thanks-mark {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--espresso);
+  color: var(--gold-on-dark);
+  font-size: 28px;
+}
+.thanks-kicker { color: var(--gold-text); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.thanks-card h1 { margin-top: 8px; font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.02; font-weight: 500; }
+.thanks-copy { max-width: 43ch; margin: 18px auto 0; color: var(--muted); }
+.thanks-status {
+  margin: 24px 0 0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: var(--cream);
+  font-size: 14px;
+}
+.status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold-text); box-shadow: 0 0 0 5px var(--gold-soft); }
+.thanks-status.is-paid .status-dot { background: oklch(55% 0.15 145); box-shadow: 0 0 0 5px oklch(80% 0.08 145 / .3); }
+.thanks-status.is-error .status-dot { background: oklch(48% 0.18 28); box-shadow: 0 0 0 5px oklch(80% 0.08 28 / .25); }
+.thanks-order { margin-top: 16px; color: var(--muted); font-size: 12.5px; overflow-wrap: anywhere; }
+.thanks-card > .btn { width: 100%; margin-top: 18px; }
+.thanks-back { display: inline-block; min-height: 44px; margin-top: 14px; padding: 12px; color: var(--brown); text-decoration: underline; text-underline-offset: 3px; }

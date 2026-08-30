@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedido recebido · Hépego Cookies</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="../assets/img/brand/favicon.png">
+  <link rel="preload" href="../assets/fonts/gyst-medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/gyst-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/obrigado.css">
+  <script defer src="../js/obrigado.js"></script>
+</head>
+<body class="thanks-page">
+  <main class="thanks-shell">
+    <a class="thanks-logo" href="../index.html" aria-label="Hépego Cookies · página inicial">
+      <img src="../assets/img/brand/logo-simples.png" alt="Hépego Cookies" width="300" height="121">
+    </a>
+    <section class="thanks-card" aria-labelledby="thanks-title">
+      <div class="thanks-mark" aria-hidden="true">✓</div>
+      <p class="thanks-kicker">Pedido Hépego</p>
+      <h1 class="serif" id="thanks-title">Estamos confirmando seu pagamento.</h1>
+      <p class="thanks-copy" data-payment-copy>Isso costuma levar só alguns segundos. Não feche esta página ainda.</p>
+      <div class="thanks-status" data-payment-status role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Consultando a InfinitePay…</span>
+      </div>
+      <p class="thanks-order" data-order-reference hidden></p>
+      <a class="btn btn--wa btn--lg" data-next-step-link href="#" target="_blank" rel="noopener" hidden>Acompanhar entrega</a>
+      <button class="btn btn--outline btn--lg" type="button" data-verify-retry hidden>Verificar novamente</button>
+      <a class="thanks-back" href="../cardapio.html">Voltar ao cardápio</a>
+    </section>
+  </main>
+</body>
+</html>
